@@ -2,6 +2,7 @@
 
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{url}
 
 \author{ The B.O.M. \\
 \small{The Ball Of Mud}\\
@@ -115,11 +116,7 @@ Getting data from the database to the user can also be done in different ways
 Since there will be a lot of data present in the database, searching through the database can be a slow process. The cache structure will speed up the searching process if the data is already present in the cache. 
 \section*{Architecture proposal}
 
-The solution we propose can be seen in Figure \ref{fig:fig6}
-
-GUI seperate so easy to handle different interfaces without changing the program
-
-Polling components for the polling - modifiability 
+With the findings of the previous section we propose the solution shown in Figure \ref{fig:fig6}
 
 \begin{figure}[!]
 \centering
@@ -128,4 +125,10 @@ Polling components for the polling - modifiability
 \label{fig:fig6}
 \end{figure}
 
+
+\newpage
+
+\nocite{*}
+\bibliographystyle{amsplain}
+\bibliography{mybib}
 \end{document}
