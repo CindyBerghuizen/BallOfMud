@@ -44,7 +44,7 @@ The system is depending on external sources. Those external sources are part of 
 \begin{itemize}
 \item What if another external datasource has to be added or an external datasource changes it's structure?
 \end{itemize}
-\item How can we modularize our system to keep changes from stakeholders maintainable.
+\item How can we modularize our system to keep changes from stakeholders maintainable?
 \end{itemize}
 
 \section*{Scenario Analysis}
@@ -57,7 +57,7 @@ The most important questions from the attribute are:
 \end{itemize}
 
 In order to answer these questions first an overall figure of the system is given in Figure \ref{fig:fig1}. 
-Throughout an interface the user will request for data (e.g. airline information). Then the purpose of the server is to gather
+Throughout an interface the user will request for data (e.g. airline information). Then the purpose of the system is to gather
 the data and show the data to the user in a given format. The process of data gathering is the key attribute of this system.
 In this document three different data gathering processes are explored:
 
@@ -105,6 +105,8 @@ Although the real time architecture would be ideal towards the clients, it is ho
 Independent polling also enhances the modifiability of the software.
 A small polling module for a new datasource can be added instead of making larger changes in the module layer. Also, when an external datasource changes we can modify the module it is linked to.
 
+One big company utilizing a system similar to the above polling is Google. Google utilizes a crawler to scan the web and store relevant data. Papers /cite{GFD} and /cite{Dremel} describe how Google then handles and searches this data.
+
 Getting data from the database to the user can also be done in different ways
 \begin{enumerate}
 \item Send a request to the database which will return the data
@@ -118,7 +120,7 @@ Getting data from the database to the user can also be done in different ways
 \label{fig:fig5}
 \end{figure}
 
-Since there will be a lot of data present in the database, searching through the database can be a slow process. The cache structure will speed up the searching process if the data is already present in the cache. 
+Since there will be a lot of data present in the database, searching through the database can be a slow process. The cache structure will speed up the searching process if the data is already present in the cache. There are numerous ways to handle caching. A paper by Yahoo /cite{Yahoo} shows numerous measurements and comparisons.
 \section*{Architecture proposal}
 
 In order to answer the questions concerning the key quality attributes we propose the architecture presented in Figure \ref{fig:fig6}.
@@ -127,10 +129,11 @@ In order to answer the questions concerning the key quality attributes we propos
 
 The proposed architecture consists of separate layers to increase
 modifiability and maintainability. For instance, the GUI and the Business Logic
-are separated, as a result when the GUI has to change it will have no effect on
+are separated. As a result of this, when the GUI has to change it will have no effect on
 the rest of the program; this will make it easy to a add a new interface e.g.
 a mobile interface. The Business Logic layer will handle all the requests from
-the GUI layer by processing the data coming from a temporary storage. 
+the GUI layer by processing the input and output data.
+This is a popular design and is for instance used as the base architecture in Chapter 2 of \cite{MSDN}.
 
 From the Business Logic Layer the request will be directed to the
 Cache. If there are parts of the data in the cache it will check if the data is
@@ -142,11 +145,10 @@ perfomance and scalability.
 
 In order to gather data the database is connected to a polling module. The
 polling module will handle the polling of the data from the external sources.
-The polling module consists of different smaller modules. Each module is
-optimised to harvest data from a specific external source according to its
-characteristics. Additionally, the Data Access Layer will be responsible to transform the
-harvested data to a universal format, e.g. xml, JSON etc, and send the data to
-update the database.
+The polling module consists of different smaller modules. This is done to increase the maintainability and modifiability.
+Each module is optimised to harvest data from a specific external source according to its
+characteristics. Additionally, the Data Access Layer will be responsible for transforming the
+harvested data's universal format, e.g. xml, JSON etc, and updating the database when the data has changed.
 
 \begin{figure}[!]
 \centering
