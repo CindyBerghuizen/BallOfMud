@@ -118,6 +118,12 @@ Since there will be a lot of data present in the database, searching through the
 
 With the findings of the previous section we propose the solution shown in Figure \ref{fig:fig6}
 
+The GUI and the Business Logic are seperated. When the GUI has to change it will have no effect on the rest of the program, this will make it easy to for example, make a mobile version. The Business Logic layer is connected to the cache and will handle all the requests from the GUI and the responds from the cache. 
+
+When a request is send it will be directed to the Cache. If there are parts of the data in the cache it will check if the data is still valid. If the data is not valid or the data is not in the Cache there will be a lookup in the database.
+
+The database is connected to the polling module. The polling module will handle the polling of the data. The polling module exists of different smaller modules, each one linked to an external datasource. The different modules can be set up according to the characteristics of the external source. The polling layer will send the updates from the different components to the database which can prepare the data and update the database.
+
 \begin{figure}[!]
 \centering
 \includegraphics[width=300px]{ProposedSolution}
