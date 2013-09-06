@@ -20,10 +20,10 @@ The purpose of this document is to research the different possibilities of the s
 
 \section*{Key quality attributes}
 
-In order to build the architecture first the key quality attributes need to be stated. The quality attributes question how the key components of the system should behave. No answers are given in this section however it points out the main questions which aid in the design and trade offs later.
+In order to build the architecture first the key quality attributes need to be stated. The quality attributes question how the key components of the system should behave. No answers are given in this section however it points out the main questions which aid in the design and trade-offs later.
 
 \subsection*{Availability}
-Availability is one of the key factors for the cliens such as airline companies. The system should be build according to their needs. Therefore a important question is : How does the system reach the end users?
+Availability is one of the key factors for the clients such as airline companies. The system should be build according to their needs. Therefore a important question is: How does the system reach the end users?
 
 \subsection*{Scalability}
 The amount of data gathered by the system is quite a lot. The system should be able to efficiently store and handle this data. 
@@ -32,17 +32,17 @@ For now it is unknown how many users will make use of this review system. Howeve
 \begin{itemize}
 \item How much resources need to be allocated in order to keep our system up to date with the external sources?
 \item How many active users should the system be able to handle at the same time?
-\item How will our system access the external datasources and what will we do with it?
+\item How will our system access the external data-sources and what will we do with it?
 \item What kind of (temporary) storage for the rapidly changing data is needed, if any is needed.
 \end{itemize}
 
 \subsection*{Modifiability}
-The system is depending on external sources. Those external sources are part of the everchanging internet. Also, our stakeholders will have a wide variety of needs which may change over time. The important questions about this are:
+The system is depending on external sources. Those external sources are part of the ever changing internet. Also, our stakeholders will have a wide variety of needs which may change over time. The important questions about this are:
 
 \begin{itemize}
 \item How can our system cope with changes in external data sources?  
 \begin{itemize}
-\item What if another external datasource has to be added or an external datasource changes it's structure?
+\item What if another external data-source has to be added or an external data-source changes it's structure?
 \end{itemize}
 \item How can we modularize our system to keep changes from stakeholders maintainable?
 \end{itemize}
@@ -53,7 +53,7 @@ The most important questions from the attribute are:
 \begin{itemize}
 \item How much resources need to be allocated in order to keep our system up to date with the external sources?
 \item What kind of (temporary) storage for the rapidly changing data is needed?
-\item How will our system access the external datasources?
+\item How will our system access the external data-sources?
 \end{itemize}
 
 In order to answer these questions first an overall figure of the system is given in Figure \ref{fig:fig1}. 
@@ -78,10 +78,10 @@ In this document three different data gathering processes are explored:
 \label{fig:fig2}
 \end{figure}
 
-\item Global polling: The data from the external sources (twitter, tripadvisor, etc.) is stored in a seperate database. A polling mechanism is put in place to synchronize the database with the external sources. One mechanism/process exists to update the external sources in a sequence. Data request from users will result on request on the database. This process is depicted in Figure \ref{fig:fig3}.  
+\item Global polling: The data from the external sources (twitter, tripadvisor, etc.) is stored in a separate database. A polling mechanism is put in place to synchronize the database with the external sources. One mechanism/process exists to update the external sources in a sequence. Data request from users will result on request on the database. This process is depicted in Figure \ref{fig:fig3}.  
 \item Independent polling: The data is stored from the external sources into a
-seperate database. However instead of one process polling the external sources
-these can be seperated. For example some sources change more frequently than
+separate database. However instead of one process polling the external sources
+these can be separated. For example some sources change more frequently than
 others therefore it makes sense to poll at different time mechanism's. Data
 request from users will result on request on the database. This process is
 depicted in Figure \ref{fig:fig4}.  
@@ -101,16 +101,16 @@ depicted in Figure \ref{fig:fig4}.
 \label{fig:fig4}
 \end{figure}
 
-Although the real time architecture would be ideal towards the clients, it is however not feasible within the scalability quality attribute. As this would require non-stop forwarding and collecting data requests from the external sources and would lead to a high amount of bandwith. Therefore to avoid non-stop polling of the same data a database was added. However this also introduces problems related to keeping the database up to date. The database can be updated from the external sources by a polling mechanism. A global polling mechanism would be the most simple solution however this does not account for the differences between the external sources. For instance, twitter is more volatile than tripadvisor. Hence an independent polling mechanism would be more appropriate as it can account for these differences and can also occur asynchronously. 
+Although the real time architecture would be ideal towards the clients, it is however not feasible within the scalability quality attribute. As this would require non-stop forwarding and collecting data requests from the external sources and would lead to a high amount of bandwidth. Therefore to avoid non-stop polling of the same data a database was added. However this also introduces problems related to keeping the database up to date. The database can be updated from the external sources by a polling mechanism. A global polling mechanism would be the most simple solution however this does not account for the differences between the external sources. For instance, twitter is more volatile than tripadvisor. Hence an independent polling mechanism would be more appropriate as it can account for these differences and can also occur asynchronously. 
 Independent polling also enhances the modifiability of the software.
-A small polling module for a new datasource can be added instead of making larger changes in the module layer. Also, when an external datasource changes we can modify the module it is linked to.
+A small polling module for a new data-source can be added instead of making larger changes in the module layer. Also, when an external data-source changes we can modify the module it is linked to.
 
 One big company utilizing a system similar to the above polling is Google. Google utilizes a crawler to scan the web and store relevant data. Papers /cite{GFD} and /cite{Dremel} describe how Google then handles and searches this data.
 
 Getting data from the database to the user can also be done in different ways
 \begin{enumerate}
 \item Send a request to the database which will return the data
-\item Send a request to a cache, which will see if the data is still (partly) in the cache. If the data is present it will check it's validity. When the data is not in the cache or is not valid anymore the data will be gathered from the database and stored in the cache.  This procedure be seen in Figure \ref{fig:fig5}
+\item Send a request to a cache, which will see if the data is still (partly) in the cache. If the data is present it will check it's validity. When the data is not in the cache or has become invalid, the data will be gathered from the database and stored in the cache.  This procedure be seen in Figure \ref{fig:fig5}
 \end{enumerate}
 
 \begin{figure}[!]
@@ -141,7 +141,7 @@ still valid using one of the algorithms currently available for cache
 invalidation. If the data is not valid or the data is not in the Cache the
 request is directed to the database. By using a Cache and reducing the number
 of requests sent to the database we reduce the workload and achieve better
-perfomance and scalability.
+performance and scalability.
 
 In order to gather data the database is connected to a polling module. The
 polling module will handle the polling of the data from the external sources.
