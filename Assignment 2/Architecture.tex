@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{verbatim}
+
+\begin{document}
+\setlength\parindent{0pt}
+\section{Definition of Architecture}
+
+First four definitions of software architecture are stated and their differences and simularities are discussed. Second, our own view on software architecture is given.
+\subsection{Definitions on architectures}
+
+\begin{enumerate}
+\item Software Architecture is the set of structures needed to reason about the software system, which comprise the software elements, the relations between them, and the properties of both elements and relations.\cite{clemens}
+
+\item Software Architecture is an abstract system specification consisting primarily of functional components described in terms of their behaviors and interfaces and component-component interconnections\cite{hayesroth}
+
+\item Software Architecture is the fundamental organization of a system embodied in its components, their relationships to each other, and to the environment, and the principles guiding its design and evolution.\cite{IEEE1471}
+
+\item Software architecture is the study of the large-scale structure and performance of software systems. Important aspects of a system's architecture include the division of functions among system modules, the means of communication between modules, and the representation of shared information.\cite{lane90}
+
+\end{enumerate}
+
+The definitions show a great deal of simularities. In all software architecture is defined as a set of structures/components/modules, their properties and the relationships between them. However each of the definitions highlights certain aspects of architecture more than the others. 
+
+\begin{itemize}
+\item In \cite{clemens} and \cite{hayesroth} the focus has been put on the end result. The architecture is defined as the components themselves (their properties/interfaces) and the relationships between them (interconnections).
+\item The definition stated in \cite{hayesroth} lays a focus on the functional components of a software architecture.
+\item The definition of \cite{IEEE1471} is more focussed around the process of designing and maintaining an architecture. It explicitity states that the design process and the evolution are part of the architecture itself.
+\item The last definition (\cite{lane90}) focusses more on comparing architectures and how the systems themselves perform. This also becomes clear from the title of the article \emph{Studying Software Architecture Through Design Spaces and Rules}.
+
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%What Chiel wrote, didn't want to throw it away
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+\subsection {Views on architectures}
+These authors all describe architecture from a different perspective (view) just like there are different (graphical) representations/views of architecture for different stakeholders. An architectural view is defined in \cite{IEEE1471} as a \emph{work product expressing the architecture of a system from the perspective of specific system concerns}. The differences between these views with different concerns in mind is more pronounced than the differences in the definitions earlier. First the different views are explained and thereafter their purposes towards stakeholders.
+
+\begin{enumerate}
+\item \emph{Module Views} A module is a implementation unit with a set of responsibilities \cite{clemens}. The module view describes the relations between the model and their responsibilities.
+\item \emph{Compoment-and-Connector Views} These views sho elements that some runtime presence such as processes, objects , clients , servers and data stores \cite{clemens}
+\item \emph{Allocation Views} These views describe the mapping of the software units to elemnts of environment in which the software is developed or executed \cite {clemens}
+\item \emph{Quality Views} A view which highlights specific concerns related to certain attributes (security, communication, reliability etc.).
+\end{enumerate}
+
+Different stakeholders are interested in different views:
+
+\begin{enumerate}
+\item A module view of a system does not help a stakeholder intrested purely in performance. This is because a module does not specify any runtime behaviour. Therefore a component-and-connector view or a performance view would be more helpfull to the stakeholder.
+\item In this project (Airline Reputation Management System) one stakeholder showed as a primary concern privacy. Showing this stakeholder a module view or allocation view would not be of much help as these do not specify privacy. A privacy view or component-and-connector view however would.
+\item A stakeholders of the systems hardware would want to see an allocation view in order to asses the hardware needs.
+\end{enumerate}
+
+\subsection{A new view on architecture}
+
+From a business perspective one important property is costliness. Business usually want systems with all kinds of fancy additions however if told what those additions would cost they might not consider them as relevant. The view we will propose and explain is therefore a "cost" view. It explains the different possibilities within a module and compares them with costs and different quality attributes in mind. This gives the initiator and the financiers a good grasp of what is possible within a module and what kind of costs are associated with it.
+
+\end{comment}
+
+
+
+\begin{thebibliography}{9}
+
+\bibitem{clemens}
+Bass et al.
+  \emph{Software Architecture in Practice}.
+  Addison Wesley, Boston,
+  3nd Edition,
+  2012.
+
+\bibitem{hayesroth}
+ Hayes-Roth, F
+ \emph{Architecture-Based Acquisition and Development of Software: Guidelines and Recommendations from the ARPA Domain-Speciﬁc
+ Software Architecture (DSSA) Program},
+ Teknowledge Federal Systems,
+ 1994
+
+\bibitem{IEEE1471}
+ IEEE Std 1471-2000,
+ \emph{Recommended Practice for Architecture Description of Software-Intensive Systems},
+ United States,
+ 2000
+
+\bibitem{lane90}
+  Lane, Thomas,
+  \emph{Studying Software Architecture Through Design Spaces and Rules}.
+  Software Engineering Institute, Carnegie Mellon University,
+  1990.
+
+\end{thebibliography}
+
+\end{document}
+
