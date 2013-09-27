@@ -3,7 +3,7 @@
 \usepackage{verbatim}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{lscape}
+\usepackage{pdflscape}
 
 \begin{document}
 \setlength\parindent{0pt}
@@ -52,12 +52,17 @@ Not only we think it is important to let the architecture show the functional co
 
 Our definition of software architecture will be:
 Software architecture is the structure of a software system defining how it is
-build up, which components has and their relations to each other. 
+build up, which components it has and the relations between the components. 
 A software architecture shows the functional and the quality requirements in
 regard to the system.
 
+%stakeholderpart
+\input{StakeholderConcerns}
+
+%Input viewpoints here
 \section{Viewpoints}
 \input{PrivacyView}
+
 
 \section{Description of our Solution}
 
