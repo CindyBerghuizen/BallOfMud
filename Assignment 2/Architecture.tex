@@ -21,7 +21,7 @@ given.
 \begin{enumerate}
 \item Software Architecture is the set of structures needed to reason about the software system, which comprise the software elements, the relations between them, and the properties of both elements and relations.\cite{clemens}
 
-\item Software Architecture is an abstract system specification consisting primarily of functional components described in terms of their behaviors and interfaces and component-component interconnections\cite{hayesroth}
+\item Software Architecture is an abstract system specification consisting primarily of functional components described in terms of their behaviours and interfaces and component-component interconnections\cite{hayesroth}
 
 \item Software Architecture is the fundamental organization of a system embodied in its components, their relationships to each other, and to the environment, and the principles guiding its design and evolution.\cite{IEEE1471}
 
@@ -29,30 +29,30 @@ given.
 
 \end{enumerate}
 
-The definitions show a great deal of similarities. In all software architecture
-is defined as a set of structures/components/modules, their properties and the
-relationships between them. However each of the definitions highlights certain
+These definitions share the same fundamental idea that software architecture
+is a set of structures/components/modules including their properties and the
+relationships between them. However, each of the definitions highlights certain
 aspects of architecture more than the others. 
-
 \begin{itemize}
-\item In \cite{clemens} and \cite{hayesroth} the focus has been put on the end result. The architecture is defined as the components themselves (their properties/interfaces) and the relationships between them (interconnections).
-\item The definition stated in \cite{hayesroth} lays a focus on the functional components of a software architecture.
-\item The definition of \cite{IEEE1471} is more focused around the process of
-designing and maintaining an architecture. It explicitly states that the design
-process and the evolution are part of the architecture itself.
-\item The last definition (\cite{lane90}) focuses more on comparing
-architectures and how the systems themselves perform. This also becomes clear
-from the title of the article \emph{Studying Software Architecture Through
-Design Spaces and Rules}.
+\item In \cite{clemens} and \cite{hayesroth} the focus has been put on the end result. The architecture 
+is defined as the components themselves (their properties/interfaces) and the relationships between them (interconnections).
+\item The definition stated in \cite{hayesroth} lays a focus on the functional components of a software architecture. With words like functional components, 
+behaviours and interfaces underlines the importance of declaring the way the components interact with each other.
+\item The definition of \cite{IEEE1471} is limited only to the systems components and their functionalities and connections but also includes in the definition the 
+process of designing and maintaining an architecture. It explicitly states that the design process and the evolution are part of the architecture itself.
+\item The last definition (\cite{lane90}) presents architecture as the study a system's structure. As a result architecture contains the modules and the connections between them that build the system. This also becomes clear
+from the title of the article \emph{Studying Software Architecture Through Design Spaces and Rules}.
 
 \end{itemize}
 
 \subsection{Our view on architecture}
-In our opinion a good architecture shows the main components and modules of the system. It should also show how all the components and modules interact with each other and with the environment. The architecture also has to show the functional and quality requirements as good as possible. Another issue we find important is that an architecture gives a clear view of the system.
+As the definitions mentioned above, we also agree on the point that a software architecture is defined as a set of components, their properties, behaviours and the relations
+between. However, we think that architecture is not only the structure of a software system but also contains the main design decisions that would explain why the system consists of 
+these components and include the stakeholders' quality attributes that lead the architects to those decisions. \\ 
 
-Our definition of software architecture therefore will be:\\
-\emph{Software architecture is set of structures that gives an overview of the system, defining how components and modules are related and interact to each other and the environment, and how they satisfy the functional and the quality requirements of the system.}
-
+Our definition of software architecture would be:
+Software architecture is the structure of a software system along with the decisions that lead to this structure. To elaborate architecture contains the components by which
+the system is build up, their functionality, the relations between them and the reason of their existence meaning which requirement of the stakeholders or quality attribute they accomplish. 
 %stakeholderpart
 \input{StakeholderConcerns}
 
@@ -165,9 +165,9 @@ issues and include that result in our website in order to encourage people to us
 
 \paragraph{Reporting System} The reporting system is a functionality only available to airlines. Each airline will be able to monitor its rating status through a report webpage which will comprise of the following components:
 \begin{itemize}
-\item Analytics concerning its progress through graphs and diagrams.
+\item Statistics concerning its progress through graphs and diagrams.
 \item Latest reviews or bad reviews from our site.
-\item Crossreference flight information with the reviews stored on our system.
+\item Cross-reference flight information with the reviews stored on our system.
 \item Comparison between airlines (only if the airline shares her information also)
 \end{itemize}
 
@@ -202,14 +202,14 @@ However the general format helps decrease the complexity of analysing, because t
 as that needs to be able to handle the data. 
 
 \paragraph{Analysing external sources}
-Not all external sources give a rating on a scale (e.g. Twitter) therefore these reviews need to be analyzed first in order to be usefull. There are multiple options available when analyzing these results:
+Not all external sources give a rating on a scale (e.g. Twitter) therefore these reviews need to be analysed first in order to be useful. There are multiple options available when analysing these results:
 \begin{enumerate}
 \item Drop all reviews that have no rating attached to them. This would lead to a huge data loss, but decrease the complexity of the system. The ratings can then easily be combined by computing a weighted average (or by another formula) of the individual ratings.
 \item Transform the reviews without ratings by performing a sentiment analysis. After the analysis the ratings can be combined the same as in the other option.
 \end{enumerate}
 
 \paragraph{Filtering}
-Some reviews may not be considered usefull, because of certain properties. The system could apply some business rules in order to filter those reviews out. The business rules governing these reviews are however currently unknown. 
+Some reviews may not be considered useful, because of certain properties. The system could apply some business rules in order to filter those reviews out. The business rules governing these reviews are however currently unknown. 
 
 
 
@@ -229,7 +229,7 @@ The data categories we define are:
 \item Users: The system requires a user management system to log in and out on the web application. This user data needs to be stored persistently. An important quality attribute related to this user data is privacy, because it holds sensitive information.
 \item Reviews: The users should be able to read and write reviews on the website.
 \item Data from data-mining: The polling module (discussed previously) supplies the system with data from different external sources (e.g. Tripadvisor, Twitter). Because of the large amount of data scalability is a key quality attribute.
-\item Analysis results: The data from external sources is analyzed to form a rating and calculate statistics for the airline companies. Performance is a key quality attribute here as these results are shown to a potentially large number of end users, as well as scalability as the statistical data grows fast over time.
+\item Analysis results: The data from external sources is analysed to form a rating and calculate statistics for the airline companies. Performance is a key quality attribute here as these results are shown to a potentially large number of end users, as well as scalability as the statistical data grows fast over time.
 \end{enumerate}
 
 To get an idea of the amount of data we get from external sources, we use the following number. There currently exist over 600 airline companies. To calculate values for 600 companies we take one specific company (KLM) and multiply the values found for this company with 600:
@@ -243,7 +243,7 @@ The size of the data already shows that great care must be taken in the data-min
 
 \subsubsection{Design Decisions}
 \paragraph{One or more databases?}
-The system has to handle data from multiple sources and different usage types. For instance, the data-mining and statistics require a lot of write commands as opposed to reads, whereas the main website data, such as reviews and users, requires more read commands as opposed to writes. For this reason the usage of specialized databases for each would increase performance and scalablity.
+The system has to handle data from multiple sources and different usage types. For instance, the data-mining and statistics require a lot of write commands as opposed to reads, whereas the main website data, such as reviews and users, requires more read commands as opposed to writes. For this reason the usage of specialized databases for each would increase performance and scalability.
 
 \paragraph{How many databases?}
 If we use more than one database we need to decide how much we can split up the data while still keeping it maintainable.
@@ -251,22 +251,22 @@ A this time we have several options:
 \begin{enumerate}
 \item Split up the main website data and data extracted from data-mining.
 \item Split up the main website data, data-mining data and statistical data.
-\item Split up the main website data and for each external source have a seperate database containing the data-mined data.
+\item Split up the main website data and for each external source have a separate database containing the data-mined data.
 \end{enumerate}
 
 \paragraph{How do we handle large data-sets?}
-The data collected from external sources require a great amount of storage over time. In addition to that, all the incoming data has to be analyzed to create new ratings and statistical data. For this data both performance and scalability are the most important attributes.
-By utilizing an event type system we can balance the load and only write away data after it has been analyzed, thus decreasing the amount of reads and writes the database has to run. The implication is that data in the event handler/queue is not persistet to the database and may be lost in system failures.
+The data collected from external sources require a great amount of storage over time. In addition to that, all the incoming data has to be analysed to create new ratings and statistical data. For this data both performance and scalability are the most important attributes.
+By utilizing an event type system we can balance the load and only write away data after it has been analysed, thus decreasing the amount of reads and writes the database has to run. The implication is that data in the event handler/queue is not persistent to the database and may be lost in system failures.
 
 \paragraph{Always recalculate ratings or combine with the known value?}
 When new data is collected from external sources or when a review is made, the rating for the airline company needs to be updated. While a complete recalculation allows you to always change the weight of your external sources and reviews, it also means that over time more and more data has to be read from the database. Because of that the performance will deteriorate over time.
-To prevent this from happening, utilizing known values can greatly improve performance. By keeping track of the amount of tweets/reviews/etc received and the current rating, you only add the new input to those values by calculating the weight and the share it has on the total. By doing so you don't traverse the whole database thus greatly improving performance. If a recalculation is required this could always be initiated separatly.
+To prevent this from happening, utilizing known values can greatly improve performance. By keeping track of the amount of tweets/reviews/etc received and the current rating, you only add the new input to those values by calculating the weight and the share it has on the total. By doing so you don't traverse the whole database thus greatly improving performance. If a recalculation is required this could always be initiated separately.
 
 \paragraph{Incremental or time-interval updates?}
-When new data is received, the rating and statistics need to be updated. This can either be done on a time-interval, such as once an hour, or using a queue and continously update the data. To get the best performance and to safe on hardware cost, the latter is the most optimal solution. By spreading out the load, the machine does not need to handle high peaks and therefor you don't need to have a machine build to handle the peak when it happens. This means that the system required to run the updates can be run on a less powerfull system thus saving cost. It also means that the data is always being updated and that the users get the most recent information possible.
+When new data is received, the rating and statistics need to be updated. This can either be done on a time-interval, such as once an hour, or using a queue and continuously update the data. To get the best performance and to safe on hardware cost, the latter is the most optimal solution. By spreading out the load, the machine does not need to handle high peaks and therefore you don't need to have a machine build to handle the peak when it happens. This means that the system required to run the updates can be run on a less powerful system thus saving cost. It also means that the data is always being updated and that the users get the most recent information possible.
 
 \paragraph{Flight-data usage}
-The stakeholder interest in flight-data was the decreasing of the weight of ratings durin delays caused by things out of the hands of the company, such as bad weather, and to see a relation in the statistics between flight-data and the height of their rating. To ensure the integrity of the reviews and to improve the performance of the system, we advice against the use of flight-data to decrease the weight of reviews. By doing so we don't have to read from the database to get the flight-data to filter reviews thus saving resources and gaining performance. It also ensures the data integrity as it may be possible that flight-data is entered after bad reviews have already been added to the system. It is also the case that if a flight is delayed or canceled the service from the airline company to accomodate the passengers is being put to the test. This should not be weighted less because the flight-data says the delay is due to bad weather.
+The stakeholder interest in flight-data was the decreasing of the weight of ratings during delays caused by things out of the hands of the company, such as bad weather, and to see a relation in the statistics between flight-data and the height of their rating. To ensure the integrity of the reviews and to improve the performance of the system, we advice against the use of flight-data to decrease the weight of reviews. By doing so we don't have to read from the database to get the flight-data to filter reviews thus saving resources and gaining performance. It also ensures the data integrity as it may be possible that flight-data is entered after bad reviews have already been added to the system. It is also the case that if a flight is delayed or cancelled the service from the airline company to accommodate the passengers is being put to the test. This should not be weighted less because the flight-data says the delay is due to bad weather.
 
 
 
