@@ -1,6 +1,9 @@
 \documentclass{article}
 \usepackage{fullpage}
 \usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lscape}
 
 \begin{document}
 \setlength\parindent{0pt}
@@ -52,6 +55,9 @@ Software architecture is the structure of a software system defining how it is
 build up, which components has and their relations to each other. 
 A software architecture shows the functional and the quality requirements in
 regard to the system.
+
+\section{Viewpoints}
+\input{PrivacyView}
 
 \section{Description of our Solution}
 
@@ -173,38 +179,33 @@ and in the case of the private conversation available only to the airline of int
 \paragraph{Review's Format} Since user's privacy is a big issue the review's format should allow anonymity. This is accomplished by omitting the name, username or any other author 
 identifier from the public representation of a review.
 
-
-%%%%%%%%%%%%%%%%%%%%%%
-%What Chiel wrote, didn't want to throw it away
-%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{comment}
-\subsection {Views on architectures}
-These authors all describe architecture from a different perspective (view) just like there are different (graphical) representations/views of architecture for different stakeholders. An architectural view is defined in \cite{IEEE1471} as a \emph{work product expressing the architecture of a system from the perspective of specific system concerns}. The differences between these views with different concerns in mind is more pronounced than the differences in the definitions earlier. First the different views are explained and thereafter their purposes towards stakeholders.
-
+\subsection{Domain specific problems related to data gathering and Analysis}
+\subsubsection{Import questions}
+The purpose of this section is to explain domain related problems related with this task. The data gathering is responsible for polling external sources and providing the data to the storage system. This implicates two important question which are further elaborated next:
 \begin{enumerate}
-\item \emph{Module Views} A module is a implementation unit with a set of responsibilities \cite{clemens}. The module view describes the relations between the model and their responsibilities.
-\item \emph{Compoment-and-Connector Views} These views show elements that some
-runtime presence such as processes, objects , clients , servers and data stores
-\cite{clemens}
-\item \emph{Allocation Views} These views describe the mapping of the software units to elemnts of environment in which the software is developed or executed \cite {clemens}
-\item \emph{Quality Views} A view which highlights specific concerns related to certain attributes (security, communication, reliability etc.).
+\item	How is the data from different external sources combined?
+\item	How is the combined data used in order to obtain a rating?
+\item	Is there any filtering process on the external data?
+\end{enumerate}
+The external sources vary from airline companies sites to review sites to social networks. These all have their own way of inputting a review. For instance, Twitter does not have any format related to the review and only consists of lines text, while review sites already have  a format in place that allows the user to rate some of the attributes (Food, timeliness, service etc.) on a given scale. The final application should be able to digest all these kinds of reviews and output the results on a scale . 
+A separate , however still important, question relates to the quality of the data. The external sources may or may not have systems in place that assure the quality of a review. Since the data is not inspected 
+
+\subsubsection{Design Decisions}
+
+\paragraph{Combining external sources}
+The sources have their own unique format as explained earlier in the document. If the system where to parse this into a general format information might get lost or lot's of information is undefined.
+However the general format helps decrease the complexity of analysing, because that system does not need to account for all the unique formats. This decision requires further collaboration with the data storage
+as that needs to be able to handle the data. 
+
+\paragraph{Analysing external sources}
+Not all external sources give a rating on a scale (e.g. Twitter) therefore these reviews need to be analyzed first in order to be usefull. There are multiple options available when analyzing these results:
+\begin{enumerate}
+\item Drop all reviews that have no rating attached to them. This would lead to a huge data loss, but decrease the complexity of the system. The ratings can then easily be combined by computing a weighted average (or by another formula) of the individual ratings.
+\item Transform the reviews without ratings by performing a sentiment analysis. After the analysis the ratings can be combined the same as in the other option.
 \end{enumerate}
 
-Different stakeholders are interested in different views:
-
-\begin{enumerate}
-\item A module view of a system does not help a stakeholder intrested purely in performance. This is because a module does not specify any runtime behaviour. Therefore a component-and-connector view or a performance view would be more helpfull to the stakeholder.
-\item In this project (Airline Reputation Management System) one stakeholder showed as a primary concern privacy. Showing this stakeholder a module view or allocation view would not be of much help as these do not specify privacy. A privacy view or component-and-connector view however would.
-\item A stakeholders of the systems hardware would want to see an allocation view in order to asses the hardware needs.
-\end{enumerate}
-
-\subsection{A new view on architecture}
-
-From a business perspective one important property is costliness. Business usually want systems with all kinds of fancy additions however if told what those additions would cost they might not consider them as relevant. The view we will propose and explain is therefore a "cost" view. It explains the different possibilities within a module and compares them with costs and different quality attributes in mind. This gives the initiator and the financiers a good grasp of what is possible within a module and what kind of costs are associated with it.
-
-\end{comment}
-
+\paragraph{Filtering}
+Some reviews may not be considered usefull, because of certain properties. The system could apply some business rules in order to filter those reviews out. The business rules governing these reviews are however currently unknown. 
 
 
 \begin{thebibliography}{9}
