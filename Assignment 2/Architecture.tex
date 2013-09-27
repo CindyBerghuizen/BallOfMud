@@ -3,9 +3,13 @@
 \usepackage{verbatim}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{lscape}
+\usepackage{pdflscape}
+
 
 \begin{document}
+\title{Software Architecture}
+\author{Chiel Peters, Omar Pakker, Mary Gouseti, Cindy Berghuizen}
+\maketitle
 \setlength\parindent{0pt}
 \section{Definition of Architecture}
 
@@ -44,21 +48,19 @@ Design Spaces and Rules}.
 \end{itemize}
 
 \subsection{Our view on architecture}
+In our opinion a good architecture shows the main components and modules of the system. It should also show how all the components and modules interact with each other and with the environment. The architecture also has to show the functional and quality requirements as good as possible. Another issue we find important is that an architecture gives a clear view of the system.
 
-We agree on the point that a software architecture is defined as a set of
-structures, components and modules, their properties and the relations
-between them. 
-Not only we think it is important to let the architecture show the functional components, it might also be necessary to show some of the quality attributes that the stakeholders find important. \\ 
+Our definition of software architecture therefore will be:\\
+\emph{Software architecture is set of structures that gives an overview of the system, defining how components and modules are related and interact to each other and the environment, and how they satisfy the functional and the quality requirements of the system.}
 
-Our definition of software architecture will be:
-Software architecture is the structure of a software system defining how it is
-build up, which components has and their relations to each other. 
-A software architecture shows the functional and the quality requirements in
-regard to the system.
+%stakeholderpart
+\input{StakeholderConcerns}
 
+%Input viewpoints here
 \section{Viewpoints}
 \input{PrivacyView}
 \input{DataFlow}
+
 
 
 \section{Description of our Solution}
