@@ -1,0 +1,30 @@
+
+\captionof{table}{How are large data-sets handled?}
+\begin{tabular}{ l  p{10cm}}
+\hline
+\bf Issue & Data collected from external sources requires a great amount of storage over time. It also needs to be analyzed and have statistics generated/stored.\\
+\hline
+\bf Decision & Event type of dispatching.\\
+\hline
+\bf Status & Decided\\
+\hline
+\bf Group & Data storage \\
+\hline
+\bf Assumptions & The number of incoming data sets is that of a big data type.  \\
+\hline
+\bf Constraints & None \\
+\hline
+\bf Positions & Pipeline model \newline\newline
+Event type of dispatching
+ \\
+\hline
+\bf Argument & In a pipeline model each step (Storing, analyzing, Storing statistics + rating) is performed in a sequence. Every review from every external source goes through the same system pipe. This is bad for scalability reasons as more and more reviews would clog up the system. The event type of dispatching can disperse reviews through a channel depending on their source. This creates paralism in the system and is more easily scalable. By collecting the data and sending it to the analyzers, FlyWithUs can generate the rating and score before storing it all. This way there is no need to read and write twice from intermediate storage which improves performance. \\
+\hline
+\bf Implications & An event handler needs to be developed with clear contracts towards the other components within the system.  \\
+\hline
+\bf Related decisions & How is the data split up into multiple databases? \\
+\hline
+\bf Related requirements  & \\
+\hline
+\end{tabular}
+

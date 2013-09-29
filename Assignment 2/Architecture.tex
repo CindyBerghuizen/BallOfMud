@@ -4,13 +4,19 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{pdflscape}
-
-
+\usepackage{caption}
+\renewcommand{\arraystretch}{1.5}
+\captionsetup[table]{name=Design Decision,font={large,sf}}
 \begin{document}
 \title{Software Architecture}
 \author{Chiel Peters, Omar Pakker, Mary Gouseti, Cindy Berghuizen}
 \maketitle
 \setlength\parindent{0pt}
+
+\section{Introduction}
+This document provides the architectural decisions together with the learning process. In the first section, multiple definitions of an architecture and our own view of an architecture is given. Then the stakeholders are identified together with their concerns.
+The third section contains multiple viewpoints on the architecture of the FlyWithUs system. Finally, Appendix A contains the results of the domain research performed early in the designing process and Appendix B contains the design decisions more formally.
+
 \section{Definition of Architecture}
 
 First four definitions of software architecture are stated and their differences
@@ -58,18 +64,21 @@ the system is build up, their functionality, the relations between them and the 
 
 %Input viewpoints here
 \section{Viewpoints}
+
+This section contains three viewpoints on the architecture. These viewpoints were mainly due to the stakeholders concerns. The privacy view provides EU-Claim and the Dutch government the information related to their
+main concerns. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last view shows the functional
+requirements of the system of all the available users. 
+
 \input{PrivacyView}
 \input{DataFlow}
+\input{FunctionalView}
 
-
-
-\section{Description of our Solution}
 
 \appendix
 
 \section{Domain Knowledge - Design Decision}
-In this section we will present the domain specific problems related to airline reputation management system. To divide the workload four separate directions were defined. These  
-directions are highly interconnected and might not appear as separate in the final design. The four directions are:
+In this appendix we will present the domain specific problems related to airline reputation management system. These provide a basis for making and finding the design decisions in Appendix B. 
+To divide the workload four separate directions were defined. These directions are highly interconnected and might not appear as separate in the final design. The four directions are:
 \begin{enumerate}
 \item User Experience
 \item Competition and Functionality
@@ -81,8 +90,8 @@ A separate section has been dedicated to each of the direction.
 \subsection{Domain Specific Problems Related to User Experience}
 \subsubsection{Important Questions}
 The purpose of this section is to ask domain specific question related to user experience. The interface consists of all front-end systems that are directly in contact with the users. 
-In order to get a better insight over the domain we searched through websites relevant to airline companies. We tried to understand what is important to the users and what they are looking for in
-a rating site. The questions that  are important to the interfaces which affect user experience are:
+In order to get a better insight over the domain a market research was performed wth related airline websites. In this research the importance was placed on the users and what they are looking for in a rating site. 
+The questions that  are important to the interfaces which affect user experience are:
 \begin{enumerate}
 \item What types of customers are distinguished in the system?
 \item What kind of interactions should each customer be able to perform?
@@ -129,7 +138,7 @@ In addition to these groups there two more:
 \subsection{Domain Specific Problems Related to Competition and Functionality}
 \subsubsection{Important Questions}
 The purpose of this section is to find the domain specific questions related to our functionality. To accomplish that, we searched in the internet to learn more about our competition
-and what they offer in order to adapt our system's architecture to focus on the functionalities that are going to differentiate us from them. The questions that help us understand the 
+and what they offer in order to adapt our system's architecture to focus on the functionalities that are going to differentiate us from them. The questions that help FlyWithUs understand the 
 domain are:
 \begin{enumerate}
 \item Who is our biggest competitor?
@@ -214,9 +223,10 @@ Some reviews may not be considered useful, because of certain properties. The sy
 
 
 
-\subsection{Domain specific problems related to data storage}
+\subsection{Domain specific problems related to data storage and Analysis}
 \subsubsection{Import questions}
-This section lays out the domain related questions with data storage. The system is responsible for storing several kinds of data both from the local system as well as data from external sources. This implies several questions:
+This section lays out the domain related questions with data storage. In the earlier section analysis was inspected from a logical perspective. In this section the analysis is mainly inspected from a performance perspective. 
+The system is responsible for storing several kinds of data both from the local system as well as data from external sources. This implies several questions:
 \begin{enumerate}
 \item What kind of data does the system need to store?
 \item How big is the data from external sources?
@@ -224,7 +234,7 @@ This section lays out the domain related questions with data storage. The system
 \end{enumerate}
 The system has to store information such as users, reviews, statistics, data from external sources, etc. Because of the variety of data types it is important to understand these data types and how the system utilizes this data.
 
-The data categories we define are:
+The data categories defined are:
 \begin{enumerate}
 \item Users: The system requires a user management system to log in and out on the web application. This user data needs to be stored persistently. An important quality attribute related to this user data is privacy, because it holds sensitive information.
 \item Reviews: The users should be able to read and write reviews on the website.
@@ -232,7 +242,7 @@ The data categories we define are:
 \item Analysis results: The data from external sources is analysed to form a rating and calculate statistics for the airline companies. Performance is a key quality attribute here as these results are shown to a potentially large number of end users, as well as scalability as the statistical data grows fast over time.
 \end{enumerate}
 
-To get an idea of the amount of data we get from external sources, we use the following number. There currently exist over 600 airline companies. To calculate values for 600 companies we take one specific company (KLM) and multiply the values found for this company with 600:
+To get an idea of the amount of data we get from external sources, we use the following number. There currently exist over 600 airline companies. To calculate values for 600 companies one specific company (KLM) is taken and the values are extrapolated over the other airline companies:
 \begin{enumerate}
 \item Twitter: There are 1.4 Tweets per minute on KLM. This would indicate that there are approximately 600 * 1.4 * 60 * 24 = 1.008.000 tweets per day on airline companies
 \item Facebook: There are 101277 talking about KLM on Facebook. This would indicate that in total 60.766.200 posts are about airline companies
@@ -246,7 +256,7 @@ The size of the data already shows that great care must be taken in the data-min
 The system has to handle data from multiple sources and different usage types. For instance, the data-mining and statistics require a lot of write commands as opposed to reads, whereas the main website data, such as reviews and users, requires more read commands as opposed to writes. For this reason the usage of specialized databases for each would increase performance and scalability.
 
 \paragraph{How many databases?}
-If we use more than one database we need to decide how much we can split up the data while still keeping it maintainable.
+If more than one database is used than  the data needs to be split up while still keeping the system maintainable. 
 A this time we have several options:
 \begin{enumerate}
 \item Split up the main website data and data extracted from data-mining.
@@ -256,7 +266,7 @@ A this time we have several options:
 
 \paragraph{How do we handle large data-sets?}
 The data collected from external sources require a great amount of storage over time. In addition to that, all the incoming data has to be analysed to create new ratings and statistical data. For this data both performance and scalability are the most important attributes.
-By utilizing an event type system we can balance the load and only write away data after it has been analysed, thus decreasing the amount of reads and writes the database has to run. The implication is that data in the event handler/queue is not persistent to the database and may be lost in system failures.
+By utilizing an event type system the load can be balanced and only write data after it has been analysed, thus decreasing the amount of reads and writes the database has to run. The implication is that data in the event handler/queue is not persistent to the database and may be lost in system failures.
 
 \paragraph{Always recalculate ratings or combine with the known value?}
 When new data is collected from external sources or when a review is made, the rating for the airline company needs to be updated. While a complete recalculation allows you to always change the weight of your external sources and reviews, it also means that over time more and more data has to be read from the database. Because of that the performance will deteriorate over time.
@@ -267,6 +277,32 @@ When new data is received, the rating and statistics need to be updated. This ca
 
 \paragraph{Flight-data usage}
 The stakeholder interest in flight-data was the decreasing of the weight of ratings during delays caused by things out of the hands of the company, such as bad weather, and to see a relation in the statistics between flight-data and the height of their rating. To ensure the integrity of the reviews and to improve the performance of the system, we advice against the use of flight-data to decrease the weight of reviews. By doing so we don't have to read from the database to get the flight-data to filter reviews thus saving resources and gaining performance. It also ensures the data integrity as it may be possible that flight-data is entered after bad reviews have already been added to the system. It is also the case that if a flight is delayed or cancelled the service from the airline company to accommodate the passengers is being put to the test. This should not be weighted less because the flight-data says the delay is due to bad weather.
+
+\section{Formal Design Decisions}
+
+This appendix states the design decisions that were taken during the process of designing an architecture. Figure \ref{fig:ddtree} shows the tree of the design decisions that will each be further elaborated on this section. 
+
+\begin{figure}[!ht]
+\includegraphics[width= 410px]{DDTree}
+\caption{The design decision tree}
+\label{fig:ddtree}
+\end{figure}
+
+\newpage
+\input{DataFormat}
+\input{FlightInformation}
+\newpage
+\input{Interfaces}
+\newpage
+\input{largeData-sets}
+\newpage
+\input{OnlinePayment}
+\newpage
+\input{recalculate-or-combine}
+\newpage
+\input{Split-up}
+\newpage
+\input{text-to-rating}
 
 
 
