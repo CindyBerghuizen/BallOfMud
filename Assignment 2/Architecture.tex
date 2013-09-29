@@ -14,8 +14,8 @@
 \setlength\parindent{0pt}
 
 \section{Introduction}
-This document provides the architectural decisions together with the learning process. In the first section, multiple definitions of an architecture and our own view of an architecture is given. Then the stakeholders are identified together with their concerns.
-The third section contains multiple viewpoints on the architecture of the FlyWithUs system. Finally, Appendix A contains the results of the domain research performed early in the designing process and Appendix B contains the design decisions more formally.
+This document provides the architectural decisions together with the learning process. In the first section, multiple definitions of software architecture and our own view of architecture are given. Then the stakeholders are identified together with their concerns.
+The third section contains multiple viewpoints on the architecture of the FlyWithUs system. Finally, Appendix A contains the results of the domain research performed early in the designing process and Appendix B contains the design decisions presented more formally.
 
 \section{Definition of Architecture}
 
@@ -44,9 +44,9 @@ aspects of architecture more than the others.
 is defined as the components themselves (their properties/interfaces) and the relationships between them (interconnections).
 \item The definition stated in \cite{hayesroth} lays a focus on the functional components of a software architecture. With words like functional components, 
 behaviours and interfaces underlines the importance of declaring the way the components interact with each other.
-\item The definition of \cite{IEEE1471} is limited only to the systems components and their functionalities and connections but also includes in the definition the 
+\item The definition of \cite{IEEE1471} is not limited only to the systems components, their functionalities and connections but also includes in the definition the 
 process of designing and maintaining an architecture. It explicitly states that the design process and the evolution are part of the architecture itself.
-\item The last definition (\cite{lane90}) presents architecture as the study a system's structure. As a result architecture contains the modules and the connections between them that build the system. This also becomes clear
+\item The last definition (\cite{lane90}) presents architecture as the study of a system's structure. As a result architecture contains the modules and the connections between them that build the system. This also becomes clear
 from the title of the article \emph{Studying Software Architecture Through Design Spaces and Rules}.
 
 \end{itemize}
@@ -57,7 +57,7 @@ between. However, we think that architecture is not only the structure of a soft
 these components and include the stakeholders' quality attributes that lead the architects to those decisions. \\ 
 
 Our definition of software architecture would be:
-Software architecture is the structure of a software system along with the decisions that lead to this structure. To elaborate architecture contains the components by which
+Software architecture is the structure of a software system along with the decisions that lead to this structure. To elaborate, architecture contains the components by which
 the system is build up, their functionality, the relations between them and the reason of their existence meaning which requirement of the stakeholders or quality attribute they accomplish. 
 %stakeholderpart
 \input{StakeholderConcerns}
@@ -90,7 +90,7 @@ A separate section has been dedicated to each of the direction.
 \subsection{Domain Specific Problems Related to User Experience}
 \subsubsection{Important Questions}
 The purpose of this section is to ask domain specific question related to user experience. The interface consists of all front-end systems that are directly in contact with the users. 
-In order to get a better insight over the domain a market research was performed wth related airline websites. In this research the importance was placed on the users and what they are looking for in a rating site. 
+In order to get a better insight over the domain a market research was performed with related airline websites. In this research the importance was placed on the users and what they are looking for in a rating site. 
 The questions that  are important to the interfaces which affect user experience are:
 \begin{enumerate}
 \item What types of customers are distinguished in the system?
@@ -102,10 +102,10 @@ During our meetings with the stakeholders it was made clear that there are two t
 \begin{enumerate} 
 \item Clients: In general, the people who write and read the reviews and ratings.
 \item Business Clients: The airline companies. The airline companies want to see a general overview of their companies ratings and reviews with some additional features such as the 
-reporting system (discussed in the next section)
+reporting system (discussed in the next section).
 \end{enumerate}
 
-An overview of the functionalities available to these groups of user is described below: 
+An overview of the functionalities available to these types of user is described below: 
 \begin{itemize}
 \item Clients (Registered Users):
 	\begin{enumerate}
@@ -125,10 +125,10 @@ An overview of the functionalities available to these groups of user is describe
 	\end{enumerate}
 \end{itemize}
 
-The fact that these two groups have clearly different functionalities results in two options concerning the system's interface, either two totally separate sites, or a general page 
+The fact that these two types have clearly different functionalities results in two options concerning the system's interface, either two totally separate sites, or a general page 
 whose content will change depending on the signed in user but the lay out will be the same.
 
-In addition to these groups there two more:
+In addition to these types there are one more type and EU-Claim:
 \begin{itemize}
  \item Guests: Unregistered users who can only search for airlines and read reviews and ratings.
  \item EU-Claim: EU-Claim can monitor a private conversation after a user's invitation. Furthermore, is notified if a conversation is not ''resolved'' for a specified period of time.
@@ -137,26 +137,26 @@ In addition to these groups there two more:
 
 \subsection{Domain Specific Problems Related to Competition and Functionality}
 \subsubsection{Important Questions}
-The purpose of this section is to find the domain specific questions related to our functionality. To accomplish that, we searched in the internet to learn more about our competition
-and what they offer in order to adapt our system's architecture to focus on the functionalities that are going to differentiate us from them. The questions that help FlyWithUs understand the 
+The purpose of this section is to find the domain specific questions related to our functionality. To accomplish that, we searched in the internet to learn more about the competition
+and what they offer in order to adapt the system's architecture to focus on the functionalities that are going to differentiate from them. The questions that help FlyWithUs understand the 
 domain are:
 \begin{enumerate}
-\item Who is our biggest competitor?
-\item Do we need to handle online payment?
+\item Who is the biggest competitor of FlyWithUs?
+\item Is online payment necessary?
 \item How do the feedback and the messaging systems work?
 \item How will the reporting system work?
-\item How can we protect our results?
-\item How do we ensure the users' privacy?
-\item Which features of our review format are going to ensure users' privacy?
+\item How can results of FlyWithUs be protected?
+\item How is users' privacy ensured?
+\item Which features of the review format are going to ensure users' privacy?
 \end{enumerate}
 
 \subsubsection{Design Decisions}
-\paragraph{Competition} Our greatest competitor seems to be http://www.airlinequality.com/. This site contains reviews about 681 airlines and 725 airports and uses a “star” rating 
+\paragraph{Competition} The greatest competitor seems to be http://www.airlinequality.com/. This site contains reviews about 681 airlines and 725 airports and uses a “star” rating 
 system called SKYTRAX. SKYTRAX has been used since 1999 and right now seems to be the only globally accepted airline rating system (is recognized as a global benchmark for airline 
 standards). Fortunately, it does not provide feedback and reporting system. Consequently it is recommended to focus these systems.
 
-\paragraph{Online Payment} It was requested that the services to the airlines will be available after payment. The payment can either take place online or offline. In the first case, 
-the stakeholders are going to have an extra cost (fee: a percent of every transaction or predefined + 10\$ – 25\$ every month). On the other hand since the 
+\paragraph{Online Payment} It was requested that the services to the airlines are available after payment. The payment can either take place online or offline. In the first case, 
+the stakeholders are going to have an extra cost (fee: a percent of every transaction or predefined + 10\$ – 25\$ every month). On the other hand, since the 
 payment is addressed only to airline companies it is possible to do that offline through contracts, invoices etc.
 
 \paragraph{Feedback \& Messaging System} The platform of FlyWithUs provides to the airlines the opportunity to respond to a review if they believe it is necessary. (Feedback system)
@@ -165,25 +165,25 @@ Additionally, an airline will be able to invite a user to a private conversation
 if he/ she wants to continue and if he/ she wishes to provide his/ her information.
 
 It is also significant to decide whether preserving the integrity of the system's  messaging service is desirable. To accomplish that, EU-Claim could be able to monitor the private 
-conversation. Although the user will be notified about this, it may still be against his/ her privacy. EU-Claim proposed this functionality to be available only if the user enables 
-it and not by default and KLM representative and the initiator agreed as well.
+conversations. Although the user will be notified about this, it may still be against his/ her privacy. EU-Claim proposed this functionality to be available only if the user enables 
+it and not by default; the KLM representative and the initiator agreed with this as well.
 
-Furthermore, it is desirable for such a conversation to have states for example “resolved”  and “pending”, then a user can change a its state from pending to resolved. As a result 
-EU-Claim can be notified by the system if a report has been unresolved for a certain period of time.  Additionally, the state of a conversation allows us to calculate the resolved 
-issues and include that result in our website in order to encourage people to use our system.
+Furthermore, it is desirable for such a conversation to have states for example “resolved”  and “pending”, then a user can change its state from pending to resolved. As a result 
+EU-Claim can be notified by the system if a report has been unresolved for a certain period of time.  Additionally, the state of a conversation allows the system to calculate the resolved 
+issues and include that result in the website in order to encourage people to use the FlyWithUs platform.
 
 \paragraph{Reporting System} The reporting system is a functionality only available to airlines. Each airline will be able to monitor its rating status through a report webpage which will comprise of the following components:
 \begin{itemize}
 \item Statistics concerning its progress through graphs and diagrams.
 \item Latest reviews or bad reviews from our site.
 \item Cross-reference flight information with the reviews stored on our system.
-\item Comparison between airlines (only if the airline shares her information also)
+\item Comparison between airlines (only if the airline shares her information as well).
 \end{itemize}
 
 \paragraph{Prevent Aggregation – Copyright} The copyright of the data that will be collected should be further investigated according to the policy of each source. If the legality of 
 harvesting data from the other sources is resolved and even if the data gathered are public, the collection of the data on our system can be protected. This can be achieved because 
 even though the data are public a collection of them is copyrightable. Additionally, we can use a file called robots.txt to prevent data aggregation from specific crawlers. However, 
-the effectiveness of this file lies entirely on the crawlers because they can ignore the file. It appears that there are no architecture relevant questions on this question.
+the effectiveness of this file lies entirely on the crawlers because they can ignore the file. It appears that there are no architecture relevant decisions on this question.
 
 \paragraph{Users' Privacy} As it was mentioned in the section Feedback \& Messaging Systems, users' privacy is an important issue. This issue was raised by three of the stakeholders 
 Dutch government, EU-Claim and the initiator. A user's data and conversations with airlines are private, this means that these information are available only after user authentication 
