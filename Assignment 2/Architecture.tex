@@ -192,7 +192,7 @@ and in the case of the private conversation available only to the airline of int
 \paragraph{Review's Format} Since user's privacy is a big issue the review's format should allow anonymity. This is accomplished by omitting the name, username or any other author 
 identifier from the public representation of a review.
 
-\subsection{Domain specific problems related to data gathering and Analysis}
+\subsection{Domain specific problems related to data gathering and analysis}
 \subsubsection{Import questions}
 The purpose of this section is to explain domain related problems related with this task. The data gathering is responsible for polling external sources and providing the data to the storage system. This implicates two important question which are further elaborated next:
 \begin{enumerate}
@@ -223,7 +223,7 @@ Some reviews may not be considered useful, because of certain properties. The sy
 
 
 
-\subsection{Domain specific problems related to data storage and Analysis}
+\subsection{Domain specific problems related to data storage and analysis}
 \subsubsection{Import questions}
 This section lays out the domain related questions with data storage. In the earlier section analysis was inspected from a logical perspective. In this section the analysis is mainly inspected from a performance perspective. 
 The system is responsible for storing several kinds of data both from the local system as well as data from external sources. This implies several questions:
@@ -242,13 +242,13 @@ The data categories defined are:
 \item Analysis results: The data from external sources is analysed to form a rating and calculate statistics for the airline companies. Performance is a key quality attribute here as these results are shown to a potentially large number of end users, as well as scalability as the statistical data grows fast over time.
 \end{enumerate}
 
-To get an idea of the amount of data we get from external sources, we use the following number. There currently exist over 600 airline companies. To calculate values for 600 companies one specific company (KLM) is taken and the values are extrapolated over the other airline companies:
+To get an idea of the amount of data we get from external sources, we use the following numbers. There currently exist over 600 airline companies. To calculate values for 600 companies one specific company (KLM) is taken and the values are extrapolated over the other airline companies:
 \begin{enumerate}
 \item Twitter: There are 1.4 Tweets per minute on KLM. This would indicate that there are approximately 600 * 1.4 * 60 * 24 = 1.008.000 tweets per day on airline companies
 \item Facebook: There are 101277 talking about KLM on Facebook. This would indicate that in total 60.766.200 posts are about airline companies
 \item Tripadvisor: There are currently 470 reviews on KLM. This indicates that there are 282.000 reviews on airline companies.
 \end{enumerate}
-The size of the data already shows that great care must be taken in the data-mining and analysis step regarding to performance and as new external sources may be added over time, scalability is also of great importance.
+The size of the data already shows that great care must be taken in the data-mining and analysis step regarding performance and scalability. As new external sources are added over time, this becomes of even greater importance.
 
 
 \subsubsection{Design Decisions}
