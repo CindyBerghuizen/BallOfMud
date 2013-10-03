@@ -1,0 +1,29 @@
+
+{\large\captionof{table}{Data format}}
+\begin{tabular}{ l  p{10cm}}
+\hline
+\bf Issue & The external sources have a unique format related to them. The system needs to be able to combine all these reviews into a final rating. What is the approach to unique format?\\
+\hline
+\bf Decision & The unique format is kept in before it is analyzed. The analyzing step converts the unique format into a rating on a category (e.g. food, timeliness) which the system can use and combine \\
+\hline
+\bf Status & Decided\\
+\hline
+\bf Group & Analysis of data; \\
+\hline
+\bf Assumptions & The data from external sources cannot easily be combined because they all have a significantly different format.  \\
+\hline
+\bf Constraints & None \\
+\hline
+\bf Positions & Keep the unique format before analyzing the data. \newline\newline
+Parse the unique format from external sources into a general format the analyses module can use. 
+ \\
+\hline
+\bf Argument & The external sources contain different layouts parsing them into a general format would either lead to data loss or lot of ‘undefined’ fields. However the analyses module does not need to account for different kinds of data which decreases its complexity. The potential loss of data (and maybe meta-data)  would however decrease the effectiveness of the analyses module. Therefore the decision was made to keep and store the data in a unique format.  \\
+\hline
+\bf Implications & The storage system needs to be able to handle the data from external sources. The analysis module needs to handle multiple lay-outs of the external sources.  \\
+\hline
+\bf Related decisions & \\
+\hline
+\bf Related requirements  & \\
+\hline
+\end{tabular}

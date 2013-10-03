@@ -5,7 +5,7 @@
 \begin{itemize}
 \item Related stakeholders: KLM, Initiator
 \item Related Concerns: Data Integrity, Performance, Scalability
-%\item Related design decisions: One or More databases?, How do we handle large data-sets?, Recalculate or combine rating?, Incremental or Time-interval update?, Flight-data usage.
+\item Related design decisions: How is the data split up into multiple databases?; How do we handle large data-sets?; Recalculate or Combine rating?; Incremental or Time-interval update?; Flight-Information
 \end{itemize}
 
 \newpage
@@ -17,7 +17,14 @@
 \end{figure}
 \end{landscape}
 
-This Data Flow viewpoint \ref{fig:Data Flow} illustrates the flow of data within the system. In this picture the review and reporting system are shown as black boxes to illustrate that what is going on in there is of no importance in this picture.
-Based on several design decisions the above design was created. The above design focusses on performance and scalability.
-This design splits data-mining and stats from the main website data. This allows for performance gain by gaining the ability to use specialized databases. It also allows us to improve scalability by only having to scale either data-mining and stats or the main website database.
-To balance the system load, we use a queue for the data. This allows you to use less powerfull servers as you don't have to handle spikes in resource requirements.
+This Data Flow viewpoint \ref{fig:Data Flow} illustrates the flow of data within the system. In this picture the review and reporting system are shown as black boxes to illustrate that their functionalitity is of no importance in this picture.
+In the related design decisions it was argumented that combining the rating with incremental updates was best for performance and scalability. Note that in the flow only the back-end of the system is given, because of the importance of handling the large data sets. The viewpoint indicates the following flow of data:
+
+\begin{enumerate}
+\item {\bf Polling} The external sources are polled a fixed time-schedule an all the individual reviews (e.g. tweets, posts) are sent off the event handler.
+\item {\bf Event Handler} The event handler send every review into their own specialized pipe according to source. This creates paralism and allows for horizontal scaling. After the event handler has sent of the reviews it waits for the callback from the analytics. After the callback is given it sends off the analyzed data into the queue for combining into a final rating.
+ \item {\bf Analyzing} Every source has its own analyzer. This way the unique format of the source can be maintained. Once the reviews are analyzed and contain a rating there are stored in specialized databases, but also given back to the event handler.
+\item {\bf Combine} Once the reviews are analyzed and contain a rating they can easily be combined by a weighting algorithm. In the design decision "Recalculate or Combine rating" it was argumented that combining the new reviews with the old ratings was better for performance. Therefore the combine also obtaines the old final ratings from the database and updates this with the new reviews.
+\end{enumerate}
+
+The design focusses on performance and scalability. Splitting data-mining and stats from the main website data allows for performance gain by gaining the ability to use specialized databases. It also improves scalability by only having to scale either the data-mining and stats database or the main website database. To balance the system load, we use a queue for the data. This allows for less powerfull servers as there is no need for the resource requirements to handle load spikes.
