@@ -1,6 +1,6 @@
 \section{Scenarios}
 
-This section contains four scenario's and how the architecture responds to them. The format is obtained from \cite{clemens}. The choices for scenario's were made on multiple factors:
+This section contains four scenarios and how the architecture responds to them. The format is obtained from \cite{clemens}. The choices for the scenarios were made on multiple factors:
 \begin{enumerate}
 \itemsep0em 
 \item To demonstrate one of the key design decisions and the related trade-offs and sensitivity points (\ref{sec:failureb2b})
@@ -24,7 +24,7 @@ This section contains four scenario's and how the architecture responds to them.
     &
     \begin{tabular}[t]{ | @{}| p{4cm} | l | l | l | l | @{} | }
       \hline
-      \textbf{Architectural Decision} & \textbf{Sensitivity} & \textbf{Tradeoff} & \textbf{Risk} & \textbf{Non-risk} \\
+      \textbf{Architectural Decision} & \textbf{Sensitivity} & \textbf{Trade-off} & \textbf{Risk} & \textbf{Non-risk} \\
       \hline
       Decoupling & S1 & T1 & & \\
       \hline
@@ -32,23 +32,23 @@ This section contains four scenario's and how the architecture responds to them.
       \hline
     \end{tabular}
     \\
-    &  T1: When both systems are decoupled and both access the same data store a tradoff is created. The performance of the B2C clients is directly linked to the performance of the B2B clients \newline
-    T2: The API contains duplicate functionality hence redundant code might exist. This is a trade off between modifiability/maintainability because of the redundant code vs availability (one system crashes does not influence the other system). \newline
-    N1: If the API was not split up as well then this would create a single point of failure as mentioned by the architecs. \newline
-    S1: If the B2B and B2C systems  are in the same server and the server goes down, B2C and B2B will both go down. \\
+    &  T1: When both systems are decoupled and both access the same data store, a trade-off is created. The performance of the B2C clients is directly linked to the performance of the B2B clients. \newline
+    T2: The API contains duplicate functionality hence redundant code might exist. This is a trade-off between modifiability/maintainability because of the redundant code vs availability (if one system crashes, the other is not influenced). \newline
+    N1: If the API was not split up, there would be a single point of failure, as mentioned by the architects. \newline
+    S1: If the B2B and B2C systems are running on the same server and the server goes down, B2C and B2B will both go down. \\
   \hline
-  \textbf{Reasoning} & Decoupling ensures, together with the different API, that if one the B2B or B2C module goes down, the other won't. \\
+  \textbf{Reasoning} & Decoupling ensures, together with the different API, that if either the B2B or B2C module goes down, the other stays unaffected. \\
   \hline
   \textbf{Architecture Diagram} & The red API crashes. \\
    & \includegraphics[width=250px]{scenario1} \\
   \hline
 \end{tabularx}
 
-\subsection{Scenario: Peak load on analytics module} \label{sec:peakload}
+\subsection{Scenario: Peak-load on the analytics module} \label{sec:peakload}
 
 \begin{tabularx}{\textwidth}{| l | X |}
   \hline
-  \textbf{Scenario} & Peak load on the analytics module \\
+  \textbf{Scenario} & Peak-load on the analytics module \\
   \hline
   \textbf{Attribute} & Performance \\
   \hline
@@ -61,7 +61,7 @@ This section contains four scenario's and how the architecture responds to them.
     &
     \begin{tabular}[t]{ | @{}| p{4cm} | l | l | l | l | @{} | }
       \hline
-      \textbf{Architectural Decision} & \textbf{Sensitivity} & \textbf{Tradeoff} & \textbf{Risk} & \textbf{Non-risk} \\
+      \textbf{Architectural Decision} & \textbf{Sensitivity} & \textbf{Trade-off} & \textbf{Risk} & \textbf{Non-risk} \\
       \hline
       Recalculate 1/2 times a day (Implicit) & & & R1 & \\
       \hline
@@ -69,10 +69,10 @@ This section contains four scenario's and how the architecture responds to them.
       \hline
     \end{tabular}
     \\
-    & R1: Recalculating the final rating once or twice a day creates a major peak load on the analytics module and might lead to an unavailable analytics module for the B2B clients. \newline
-    T1: B2B clients can directly access the analytics module, this gives the B2B clients the freedom to perform custom searches, but also leads to unavailability if the module is overburdend.\\
+    & R1: Recalculating the final rating once or twice a day creates a peak-load situation on the analytics module and might lead to slow or unresponsive connections between the analytics module and the B2B clients. \newline
+    T1: B2B clients can directly access the analytics module, which gives the B2B clients the freedom to perform custom searches. The trade-off of this is that when the module is overloaded, the functionality may be unavailable.\\
   \hline
-  \textbf{Reasoning} & Recalculating on a time frame creates a massive peakload  which may lead to an undesirable response time when the B2B performs a custom search. \\
+  \textbf{Reasoning} & Recalculating on a time frame creates a peak-load situation which may lead to an undesirable response time when a B2B user tries to perform a custom search. \\
   \hline
   \textbf{Architecture Diagram} & Analytics module overloaded. \\
    & \includegraphics[width=300px]{scenario2} \\
@@ -96,22 +96,22 @@ This section contains four scenario's and how the architecture responds to them.
     &
     \begin{tabular}[t]{ | @{}| p{4cm} | l | l | l | l | @{} | }
       \hline
-      \textbf{Architectural Decision} & \textbf{Sensitivity} & \textbf{Tradeoff} & \textbf{Risk} & \textbf{Non-risk} \\
+      \textbf{Architectural Decision} & \textbf{Sensitivity} & \textbf{Trade-off} & \textbf{Risk} & \textbf{Non-risk} \\
       \hline
       Logged In & & & R1 & \\
       \hline
     \end{tabular}
     \\
-    & R1: The anonymity of the user posting a review is not guaranteed.  \\
+    & R1: The anonymity of the user posting a review is not guaranteed. \\
   \hline
-  \textbf{Reasoning} & In the architecture it is not stated that a review will be shown anonymous or how anonimity of reviews is guaranteed. \\
+  \textbf{Reasoning} & The architecture does not state how anonymity of reviews is guaranteed, assuming that a review will be shown anonymous. \\
   \hline
   \textbf{Architecture Diagram} & Anyone can see review details. \\
    & \includegraphics[width=300px]{scenario3} \\
   \hline
 \end{tabularx}
 
-\subsection{Scenario: Big data} \label{sec:bigdata}
+\subsection{Scenario: Big Data} \label{sec:bigdata}
 
 \begin{tabularx}{\textwidth}{| l | X |}
   \hline
@@ -128,7 +128,7 @@ This section contains four scenario's and how the architecture responds to them.
     &
     \begin{tabular}[t]{ | @{}| p{4cm} | l | l | l | l | @{} | }
       \hline
-      \textbf{Architectural Decision} & \textbf{Sensitivity} & \textbf{Tradeoff} & \textbf{Risk} & \textbf{Non-risk} \\
+      \textbf{Architectural Decision} & \textbf{Sensitivity} & \textbf{Trade-off} & \textbf{Risk} & \textbf{Non-risk} \\
       \hline
       ETL Adapters & & & & N1 \\
       \hline
@@ -138,15 +138,15 @@ This section contains four scenario's and how the architecture responds to them.
       \hline
     \end{tabular}
     \\
-    & S1: If it is Big data the system can not handle the input a choke point will occur in the pipe model. \newline
-    N1: The modules in the ETL are independent and therefore easily modifiable. \newline
-    R1: The \emph{Filter and Store} and \emph{Extract and apply} module process all reviews sequentially which is a risk regarding scalability \\
+    & S1: If the amount of external input grows and becomes Big Data, the system will be unable to handle the input due to the pipe model. \newline
+    N1: The adapters in the ETL are independent and therefore easily modifiable. \newline
+    R1: The \emph{Filter and Store} and \emph{Extract and apply} module process all reviews sequentially which is a risk regarding scalability. \\
   \hline
-  \textbf{Reasoning} & The pipeline structure won't be able to process large input sets of data (Big data).  \\
+  \textbf{Reasoning} & The pipeline structure won't be able to process large sets of data (Big Data) as input and won't scale easily. \\
   \hline
-  \textbf{Architecture Diagram}. \\
+  \textbf{Architecture Diagram}. & \\
    & \includegraphics[width=300px]{scenario4} \\
   \hline
-  \textbf{Notes} & The architectures note that \emph{a dramitacally higher number of reviews would choke the system}. It was therefore an explicit choice to not handle big data, however this scenario is valuable in that it identifies the components that need to be modified in order to make it more scalable. \\
+  \textbf{Notes} & The architectures note that \emph{a dramatically higher number of reviews would choke the system}. It was therefore an explicit choice to not handle big data, however this scenario is valuable in that it identifies the components that need to be modified in order to make it more scalable. \\
   \hline
 \end{tabularx}
