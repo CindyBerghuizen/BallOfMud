@@ -1,65 +1,66 @@
-\textbf{1. Are specific architecturally significant requirements (i.e., the sub-set of functional, quality attribute, and business requirements that “shape” the architecture under consideration) identified? }
+\textbf{1. Are specific architecturally significant requirements (i.e., the sub-set of functional, quality attribute, and business requirements that “shape” the architecture under consideration) identified?}
 
-The requirements are stated within the Appendix A. They are divided into three subcategories: 
+The requirements are stated within Appendix A. They are divided into three subcategories: 
 \begin{enumerate}
 \item Business Goals
 \item Functional requirements
 \item Quality attributes
 \end{enumerate}
 
-The business goals derive specific requirements related to financial objecives, growth, social responsibility and market position. The business goals are stated using the template in\cite{clemens}. \newline The functional requirements state the functionality that the system must support. On key requirement of the FlyWithUs system that is not mentioned is : messaging system. Currently the requirements state:
+The business goals derive specific requirements related to financial objectives, growth, social responsibility and market position. The business goals are stated using the template in\cite{clemens}. \newline
+The functional requirements state the functionality that the system must support. One key requirement of the FlyWithUs system that is not mentioned is the messaging system. Currently the requirements state:
 
-\emph{Business to Business clients need to be able to respond to posts done by Business to Consumer users via the FlyWithUs application}
+\emph{Business to Business clients need to be able to respond to posts made by Business to Consumer users via the FlyWithUs application}
 
-However this does not capture that the conversation should occur privately between the business and the clients. This would change the architecture
-as privacy should be considered as a main concern. \newline
-The quality attributes state the main quality attributes and how they apply to the system and stakeholders. EU-Claim called for performance however this is not mentioned elsewhere in the document. Privacy and security are taken as one while it is not mentioned how privacy applies towards the system.
-
-\vspace{.5cm}
-\textbf{2. Are ASRs represented in a clear, unambiguous manner (c.f., 6-part quality attribute scenarios [Bass 2003])? Is the utility of the requirements documented in terms of what the system does and how it meets the customer’s expectations? }
-
-At first, ASRs are introduced and related to the stakeholders. Then they are expressed as business goals which clarifies these ASRs; however, business goal M3 (\textit{ Improve KLM airliner quality in comparison with other}) implies that KLM will be dealt differently than the other airlines while a requirement was to deal with all the airlines in the same way. After the business goals the functional requirements are stated. Functional requirements are expressed as a list of things the system must/should do. However, it is not clear if this vocabulary is used to prioritize the requirements. Additionally the services the system provides to users (business or clients) are briefly mentioned and not elaborated which makes them unclear, for example it is mentioned that the data must be fair but it is not explained what that means and how it affects architecture. As a result the system's functionality is not clearly documented which makes it difficult to conclude if it meets customer's expectations.
+However this does not capture that the conversation should occur privately between the business and the clients. This would change the architecture as privacy should be considered as a main concern. \newline
+The quality attributes state the main quality attributes and how they apply to the system and stakeholders. EU-Claim called for performance however this is not mentioned elsewhere in the document. Privacy and security are taken as one but how privacy applies towards the system is never mentioned.
 
 \vspace{.5cm}
-\textbf {3. Are there remaining requirements that could come up later and have a significant impact on the architecture? How will the architecture (and the architecting process) react to the emergence of new ASRs? }
+\textbf{2. Are ASRs represented in a clear, unambiguous manner (c.f., 6-part quality attribute scenarios [Bass 2003])? Is the utility of the requirements documented in terms of what the system does and how it meets the customer’s expectations?}
 
-One big assumption mentioned in the beginning of the document is that the data is not big data. Considering the growth of social networks this may become a requirement in the near future. The current model is a pipeline model which does not scale with the amount of incoming external resources. Therefore a large part of the ETL module would be required to change in order to cope with the big data. 
+At first, ASRs are introduced and related to the stakeholders. Then they are expressed as business goals, which clarifies these ASRs. However, business goal M3 (\textit{Improve KLM airliner quality in comparison with other}) implies that KLM will be dealt with differently than the other airlines, while one of the requirements states was that all the airlines should be dealt with in the same manner. After the business goals the functional requirements are stated. Functional requirements are expressed as a list of things the system must/should do. However, it is not clear whether or not this vocabulary is used to prioritize the requirements. Additionally the services the system provides to users (business or clients) are briefly mentioned and not elaborated, which makes them unclear. For example, it is mentioned that the data must be fair but it is not explained what that means and how it affects architecture. As a result the system's functionality is not clearly documented which makes it difficult to conclude if it meets the customer's expectations.
+
+\vspace{.5cm}
+\textbf {3. Are there remaining requirements that could come up later and have a significant impact on the architecture? How will the architecture (and the architecting process) react to the emergence of new ASRs?}
+
+One big assumption mentioned in the beginning of the document is that the data is not big data. Considering the growth of social networks this may become a requirement in the near future. The current model is a pipeline model which does not easily scale with the amount of incoming data from external sources. Therefore a large part of the ETL module would be required to change in order to cope with the big data.
 
 \vspace{.5cm}
 \textbf {4. Is the relationship between ASRs documented and understood (e.g. between performance requirements in a distributed system and the bandwidth reliability and stability of the supporting network transport systems)?}
 
-The relation between scalability and performance is documented and can easily be understood. Other than that relation no relationships are mentioned in the requirements. 
+The relation between scalability and performance is documented and can easily be understood. There are no other relationships mentioned in the requirements.
 
 \vspace{.5cm}
 \textbf{5.Are decisions represented in a clear, unambiguous manner (c.f., architectural tactics [Bass 2003])? 
          Is the rationale for key decisions captured?
          Are the costs and resources associated with implementing the decisions documented?}
-The main decisions are presented using the template from \cite{}. Apart from the group field that is not correctly used because performance is included in this field, the remaining decisions are clear and unambiguous. The rational of every decision is explained in the arguement field. Costs and resources are mentioned but not thoroughly explained.
+The main decisions are presented using the template from \cite{tyree}. Apart from the group field that is not correctly used because performance is included in this field, the remaining decisions are clear and unambiguous. The rational of every decision is explained in the argument field. Costs and resources are mentioned but not thoroughly explained.
 
 \vspace{.5cm}
 \textbf {6. Are there remaining architectural decisions or impacts (e.g., issues or problems that could come up during deployment, deferred decisions that need to be bound later)?}
 
-Currently for both the B2C and B2B modules all functionality is mentioned as API. There are decisions related to how this API functions what interactions there are possible between the user and its API and how the API obtaines the data from the storage.
+Currently for both the B2C and B2B modules all functionality is mentioned as API. There are decisions related to how this API functions what interactions are possible between the modules and the API and how the API obtains the data from the storage. This could be elaborated further to show how functionalities relate and what dependencies there are.
 
 \vspace{.5cm}
-\textbf{7. Is there a mapping between decisions and requirements? }
-The format used is defined in \cite{tyree}. The table contains the row related requirements which does this mapping. However it is not followed as strictly as elsewhere in the document where the requirement code (G1, R1 etc.) is used. 
+\textbf{7. Is there a mapping between decisions and requirements?}
+The format used is defined in \cite{tyree}. The table contains the row 'related requirements' which does this mapping. However, it is not followed as strictly as elsewhere in the document where the requirement code (G1, R1 etc.) is used.
 
 \vspace{.5cm}
-\textbf{11. Are specific driving architectural decisions identified? Is the relationship between them documented and understood (e.g., between performance requirements in a distributed system and the bandwidth, reliability, and stability of the supporting network trans-port systems)?}
+\textbf{11. Are specific driving architectural decisions identified? Is the relationship between them documented and understood (e.g., between performance requirements in a distributed system and the bandwidth, reliability, and stability of the supporting network transport systems)?}
 
-Most design decisions are of architectural kind and may not be comprehensable to the stakeholders. The format used is defined in \cite{tyree} and contains a row related design decision which indicates with decisions are related. How they are related is however not mentioned.
+Most design decisions are based on technical information and less on cost. Therefore they may not be comprehensible to all the stakeholders. The format used is defined in \cite{tyree} and contains a row 'related design decisions' which indicates with decisions are related. How they are related is however not mentioned.
 
 \vspace{.5cm}
 \textbf{12. Are decisions represented in a clear, unambiguous manner? Is the rationale for key decisions captured? Are the costs and resources associated with implementing the decisions documented?}
-Arguments and implications are provided for most of the main decisions which makes their significance clear to the stakeholders. However, the costs are not analysed enough.
+Arguments and implications are provided for most of the main decisions, which makes their significance clear to the stakeholders. However, the costs are not analysed enough.
 
 \vspace{.5cm}
-\textbf{13. Are there remaining architectural decisions or impacts (e.g., issues or problems that could come up during deployment, deferred de-cisions that need to be bound later)?}
+\textbf{13. Are there remaining architectural decisions or impacts (e.g., issues or problems that could come up during deployment, deferred decisions that need to be bound later)?}
 
 As mentioned towards the architects there are remaining design decisions related towards the functionality of the B2B and B2C modules and how these modules are communicating.
 
 \vspace{.5cm}
 \textbf{14. Do you understand how the AD will identify constraints and implementation responsibilities (e.g. delegated decisions?)}
 
-The constraints are given in the template of \cite{clemens} in the row constraints however the responsibilities are not delegated towards the stakeholders. This is because only the stakeholders that use the system are mentioned and not the stakeholders that will implement this system. 
+The constraints are given in the template of \cite{clemens} in the row 'constraints'. However, the implementation responsibilities are not identified.
+%However, the responsibilities are not delegated towards the stakeholders. This is because only the stakeholders that use the system are mentioned and not the stakeholders that will implement this system.
