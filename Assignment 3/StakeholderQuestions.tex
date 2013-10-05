@@ -1,0 +1,96 @@
+\begin{longtable}{| l | p{13cm} |}
+  \hline
+  \textbf{Stakeholder} & \textbf{1. State your stakeholder role. List the set of concerns you have that pertain to the architecture whose AD is being reviewed.} \\
+  \hline
+  EU Claim & As EU Claim there are two major concerns with the FlyWithUs system. One is that the privacy of the users must be guaranteed. The second is that the system is fair and transparant. No airline should have more influence than another. \\
+  \hline
+  AirFrance-KLM & AirFrance-KLM wants to be ablo to contact the user based on a review. The customer service wants detailed statistics and reports with regards to both external and internal reviews. Also bad reviews outside of the blame of the Airline companies should not affect the overall rating, hence crossmatching bad weather with flight information should be possible. Other concerns are: costs and customer satisfaction. \\
+  \hline
+  Dutch Government &As a representative of the Dutch government, Privacy and GreenIT are the main concerns in this project. \\
+  \hline
+  Initiator & The project must become succesfull in that the FlyWithUs system becomes the  number one airline review website of the web.  My main concerns are the overall functionality of the system, profitability and time to market. \\
+  \hline
+
+  \hline
+  \textbf{Stakeholder} & \textbf{2. Find and record all places in the AD where your stakeholder role is listed as being covered.} \\
+  \hline
+  EU Claim & Appendix A, page 16, Stakeholder 2: Sven-Erik Haitjema  \\
+  \hline
+  AirFrance-KLM & Appendix A, page 16, Stakeholder 4: Sinan Ceylan.  \\
+  \hline
+  Dutch Government & Appendix A, page 16, Stakeholder 3: Philipp Darkow. \\
+  \hline
+  Initiator & Appendix A, page 16, Stakeholder 1: Peter Klijn. \\
+  \hline
+
+  \hline
+  \textbf{Stakeholder} & \textbf{3. Find and record all places in the AD where your concerns are listed as being addressed.} \\
+  \hline
+  EU Claim & Page 17: R1\\ 
+& Page 19: Q4, Q5 \\
+  \hline
+  AirFrance-KLM & Page 16: F2 \\
+    & Page 18: M3 \\
+    & Functional Requirements: 5, 8, 9 \\
+    & Page 19: Q2\\
+  \hline
+  Dutch Government & Page 6: GreenIT [R2] \\
+    &Page 17: R1\\
+    &Page 17: R2 \\
+  \hline
+  Initiator & Page 6: Vendor lock-in [M2] \\
+    & Page 16: F1 \\
+    & Page 17: G1 \\
+    & Page 17/18: M1 \\
+    & Page 18: M2 \\
+    & Functional Requirements: 1 t/m 9 \\
+    & Page 19: Q1 t/m Q5\\
+  \hline
+
+  \hline
+  \textbf{Stakeholder} & \textbf{6. Record all concerns you have that are not listed as being covered in either the AD or any framework being used or that are listed in an unclear fashion. For each, state the impact of this omission or misunderstanding on project success.} \\
+  \hline
+  EU Claim & Both of EU-Claim's concerns are mentioned briefly, but stated in an unclear manner. Transparancy/fairness are mentioned in Q4 however nowhere is mentioned how the system filters the reviews in order to keep the system fair. Privacy is mentioned as logging in and obtaining a certain role. But how privacy works in regards with the all overseeing administrator is not clear. This could become vital for project success if privacy is not well governed (Reputation). \\
+  \hline
+  AirFrance-KLM & All of AirFrance-KLM concerns are stated except cross-matching the reviews with flight information/weather data. Although not critically important this feature does help the airlines.\\
+  \hline
+  Dutch Government & Currently the same concern as EU Claim is not covered, how is privacy handled within the system. Are reviews posted with all public information of the user or anonymously? \\
+  \hline
+  Initiator & As Iniator, the business concerns are clearly covered within the document however the functionality still is unclear. The functional requirements are mentioned however it is not always clear how these will be achieved in the viewpoints. \\
+  \hline
+
+  \hline
+  \textbf{Stakeholder} & \textbf{7. For each of your concerns as a stakeholder, find and record the places in the AD where that concern is addressed (not just listed). Explain why you do or do not believe that the concern will be satisfied by the architecture.} \\
+  \hline
+  EU Claim & Privacy: Adressed on page 10 at Airline Rating Service Database on page 25 at seperate users table. The concern related to where the information is placed is clearly stated however how privacy is handled related to reviews is unclear. The user database will be protected and located under dutch law. \\
+    & Transparency/Fairness: It is touched upon in page 15 at 'Filter and Store' and at 'Extract and Apply'. However the business rules related to filtering and fairness are not discussed and hence it is hard for the architecture to satisfy this concern. \\
+  \hline
+  AirFrance-KLM & Usability: Adressed on page 6 at "fast and easy to query"; page 6 at "performance"; page 8 at "B2C application"; page 10 at "Airline Rating Service database"; Section 2.2;  page 18 at "functional requirements"; page 19 at "Quality attribute 2". \newline
+  The functional requirements related to AirFrance-KLM are stated in multiple places and this should suffice for the architecture. \\ 
+    & Customer contact: Mentioned on page 19 in the requirements however not in the viewpoints. Therefore the architecture will probably not satisfy this concern.  \\
+  \hline
+  Dutch Government & GreenIT: Adressed on page at "GreenIT [R2]" \newline
+  GreenIT is mentioned in the business view. However, it does not give any grounded argumentation or facts for the choice of using a non-relational database. It seems to mostly rely on guesswork and ‘gut-feeling’. The privacy concerns related to the location of the database are clearly stated and the architecture will be able to satisfy this concern. The privacy in the system however is not adressed. \\
+  \hline
+  Initiator & Functional requirements adressed on page 18. \newline
+  The functional requirements are not stated very clear and most of them are not explained in detail through out the viewpoints. The API in the B2C and B2B viewpoints must adress most of these concerns. However the architecture must be defined more in detail to satisfy these concerns. \\
+  \hline
+
+  \hline
+  \textbf{Stakeholder \blank{.72cm}} & \textbf{8. Find and record the place in the AD that prioritizes the concerns. Explain why you do or do not agree with it.} \\
+  \hline
+  All & There is no prioritization of the concerns. Some are mentioned in a way that they "must" or "should" be implemented, which may indicate a prioritization. The document in general lays a high focus on how the data is handled which gives a priority to performance and scalability. \\
+  \hline
+
+  \hline
+  \textbf{Stakeholder \blank{.72cm}} & \textbf{9. Record important stakeholders that you are aware of that are not listed and whose concerns are not represented in the AD.} \\
+  \hline
+  All & All the stakeholders are listed. \\
+  \hline
+	
+  \hline
+  \textbf{Stakeholder \blank{.72cm}} & \textbf{10. State how you know that the architecture satisfies the concerns of the missing stakeholders and where this information can be found in the AD.} \\
+  \hline
+  All & There are no missing stakeholders. \\
+  \hline
+\end{longtable}
