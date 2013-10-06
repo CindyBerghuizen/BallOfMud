@@ -1,0 +1,33 @@
+This subset of questions is based of \emph{Reviewing Choice of Framework and Viewpoints} (\cite{tyree}). Only the questions related to viewpoints and views are chosen, because the AD is not developed within any specific framework.\\
+
+\textbf{1. Do the selected viewpoints and their prescribed models, languages, techniques, evaluation criteria, correspondence rules, and so on, frame the concerns of the stakeholders?}
+
+The selected viewpoints in this case are the Business view, the functional decomposition view and a view of the datastore. This should frame the concerns of the stakeholders. The business view frames the concerns of the initiator, the Dutch government and Airfrance-KLM, the functional view frames the concerns of Airfrance-KLM and the initiator and the ETL Pipes-and-Filter view also frames the concerns of the Initiator. There is no view that will represent the concerns of EU claim and the concerns about privacy are missing in the viewpoints. 
+ 
+\vspace{.5cm}
+
+\textbf{9. For each viewpoint, are its models clear and well-defined? Do the models provide enough information for determining whether the concerns framed by the viewpoint have been satisfied?}
+
+The viewpoints all use seperate symbols and do not all contain a legend which make some models unclear. The models could benefit from a consistent symbol use through out the (sub) viewpoints.
+
+The first view is the business goal view which frames the concerns of the initiator, the Dutch Government and Airfrance-KLM. The business view gives a readable overview of the options when choosing a database system, which is important for the performance, time to market and the profit to be made. The view also shows GreenIT, which is a concern of the Dutch Government. \\
+
+The second view presented is the functional decomposition view.  This view should satisfy the concerns of AirFrance-KLM and the initiator. Although it gives a nice overview of the system and considers the modifiability of the program, the view is too general. The functionalities of the system like the reporting / reviewing and messaging system are nowhere to be found. The document zooms in on different aspects of the functional viewpoint, but it still does not frame all the concerns. The datastore zoom gives a good view for how the data is handled but for framing all the stakeholders concerns the B2B/B2C zoom should be more specific. The conclusion is that although this view is important to be presented, it is not detailed enough to give a good representation of the functionalities of the system.\\
+
+The third view is the ETL Pipes-and-Filter view and focuses on Q1 (modifiability) and Q4 (data quality) which are mainly concerns of the initiator. In this view it becomes clear how the Data-Source adapters contribute to the modifiability of the system, which is very important for FlyWithUs. Also, it gives a clear view of how the incoming data is handled and stored. 
+\vspace{.5cm}
+
+\textbf{11. What correspondences exist between models in the same viewpoint or across different viewpoints? Which came from the architect's own selection of viewpoints?}
+
+The functional decomposition view and the ETL Pipes-and-Filter have a lot of simularities. As indicated on page 7 the ETL Pipes-and-Filter view was originally intended to be inside the functional decomposition view as a seperate subsection (2.3). The architectures however found that the ETL was better placed in its own view. 
+
+\vspace{.5cm}
+
+\textbf{14. Is it feasible that the views drawing upon these models, viewpoints, and framework(s) can be constructed with the available tool, techniques, and people within the time and funding available?}
+
+Because of the high level of technicality within the current viewpoints it is likely that the views can be constructed with the available tools and techniques. The time frame is stated as 6 months (requirement M1 on page 17), how this goal is achieved is however not mentioned within the views and needs be further researched. 
+\vspace{.5cm}
+
+\textbf{15. Is there rationale captured for the choice of framework, viewpoints, models, and correspondences?}
+
+The rationale for the choice of viewpoints is not stated in the architectural documentation.
