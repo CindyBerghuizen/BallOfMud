@@ -1,82 +1,5 @@
-\documentclass{article}
-\usepackage{fullpage}
-\usepackage{verbatim}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{pdflscape}
-\usepackage{caption}
-\renewcommand{\arraystretch}{1.5}
-\captionsetup[table]{name=Design Decision,font={large,sf}}
-\begin{document}
-\title{Software Architecture}
-\author{Chiel Peters, Omar Pakker, Mary Gouseti, Cindy Berghuizen}
-\maketitle
-\setlength\parindent{0pt}
 
-\section{Introduction}
-This document provides the architectural decisions together with the learning process. In the first section, multiple definitions of software architecture and our own view of architecture are given. Then the stakeholders are identified together with their concerns.
-The third section contains multiple viewpoints on the architecture of the FlyWithUs system. Finally, Appendix A contains the results of the domain research performed early in the designing process and Appendix B contains the design decisions presented more formally.
-
-\section{Definition of Architecture}
-
-First four definitions of software architecture are stated and their differences
-and similarities are discussed. Second, our own view on software architecture is
-given.
-\subsection{Definitions on architectures}
-
-\begin{enumerate}
-\item Software Architecture is the set of structures needed to reason about the software system, which comprise the software elements, the relations between them, and the properties of both elements and relations.\cite{clemens}
-
-\item Software Architecture is an abstract system specification consisting primarily of functional components described in terms of their behaviours and interfaces and component-component interconnections\cite{hayesroth}
-
-\item Software Architecture is the fundamental organization of a system embodied in its components, their relationships to each other, and to the environment, and the principles guiding its design and evolution.\cite{IEEE1471}
-
-\item Software architecture is the study of the large-scale structure and performance of software systems. Important aspects of a system's architecture include the division of functions among system modules, the means of communication between modules, and the representation of shared information.\cite{lane90}
-
-\end{enumerate}
-
-These definitions share the same fundamental idea that software architecture
-is a set of structures/components/modules including their properties and the
-relationships between them. However, each of the definitions highlights certain
-aspects of architecture more than the others. 
-\begin{itemize}
-\item In \cite{clemens} and \cite{hayesroth} the focus has been put on the end result. The architecture 
-is defined as the components themselves (their properties/interfaces) and the relationships between them (interconnections).
-\item The definition stated in \cite{hayesroth} lays a focus on the functional components of a software architecture. With words like functional components, 
-behaviours and interfaces underlines the importance of declaring the way the components interact with each other.
-\item The definition of \cite{IEEE1471} is not limited only to the systems components, their functionalities and connections but also includes in the definition the 
-process of designing and maintaining an architecture. It explicitly states that the design process and the evolution are part of the architecture itself.
-\item The last definition (\cite{lane90}) presents architecture as the study of a system's structure. As a result architecture contains the modules and the connections between them that build the system. This also becomes clear
-from the title of the article \emph{Studying Software Architecture Through Design Spaces and Rules}.
-
-\end{itemize}
-
-\subsection{Our view on architecture}
-As the definitions mentioned above, we also agree on the point that a software architecture is defined as a set of components, their properties, behaviours and the relations
-between. However, we think that architecture is not only the structure of a software system but also contains the main design decisions that would explain why the system consists of 
-these components and include the stakeholders' quality attributes that lead the architects to those decisions. \\ 
-
-Our definition of software architecture would be:
-Software architecture is the structure of a software system along with the decisions that lead to this structure. To elaborate, architecture contains the components by which
-the system is build up, their functionality, the relations between them and the reason of their existence meaning which requirement of the stakeholders or quality attribute they accomplish. 
-%stakeholderpart
-\input{StakeholderConcerns}
-
-%Input viewpoints here
-\section{Viewpoints}
-
-This section contains three viewpoints on the architecture. These viewpoints were mainly due to the stakeholders concerns. The privacy view provides EU-Claim and the Dutch government the information related to their
-main concerns. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last view shows the functional
-requirements of the system of all the available users. 
-
-\input{PrivacyView}
-\input{DataFlow}
-\input{FunctionalView}
-
-
-\appendix
-
-\section{Domain Knowledge - Design Decision}
+\section{Domain Knowledge - Answers}
 In this appendix we will present the domain specific problems related to airline reputation management system. These provide a basis for making and finding the design decisions in Appendix B. 
 To divide the workload four separate directions were defined. These directions are highly interconnected and might not appear as separate in the final design. The four directions are:
 \begin{enumerate}
@@ -97,7 +20,7 @@ The questions that  are important to the interfaces which affect user experience
 \item What kind of interactions should each customer be able to perform?
 \end{enumerate}
 
-\subsubsection{Design Decisions}
+\subsubsection{Answers}
 During our meetings with the stakeholders it was made clear that there are two types of customers:
 \begin{enumerate} 
 \item Clients: In general, the people who write and read the reviews and ratings.
@@ -150,7 +73,7 @@ domain are:
 \item Which features of the review format are going to ensure users' privacy?
 \end{enumerate}
 
-\subsubsection{Design Decisions}
+\subsubsection{Answers}
 \paragraph{Competition} The greatest competitor seems to be http://www.airlinequality.com/. This site contains reviews about 681 airlines and 725 airports and uses a “star” rating 
 system called SKYTRAX. SKYTRAX has been used since 1999 and right now seems to be the only globally accepted airline rating system (is recognized as a global benchmark for airline 
 standards). Fortunately, it does not provide feedback and reporting system. Consequently it is recommended to focus these systems.
@@ -203,7 +126,7 @@ The purpose of this section is to explain domain related problems related with t
 The external sources vary from airline companies sites to review sites to social networks. These all have their own way of inputting a review. For instance, Twitter does not have any format related to the review and only consists of lines text, while review sites already have  a format in place that allows the user to rate some of the attributes (Food, timeliness, service etc.) on a given scale. The final application should be able to digest all these kinds of reviews and output the results on a scale . 
 A separate , however still important, question relates to the quality of the data. The external sources may or may not have systems in place that assure the quality of a review. Since the data is not inspected 
 
-\subsubsection{Design Decisions}
+\subsubsection{Answers}
 
 \paragraph{Combining external sources}
 The sources have their own unique format as explained earlier in the document. If the system where to parse this into a general format information might get lost or lot's of information is undefined.
@@ -251,7 +174,7 @@ To get an idea of the amount of data we get from external sources, we use the fo
 The size of the data already shows that great care must be taken in the data-mining and analysis step regarding performance and scalability. As new external sources are added over time, this becomes of even greater importance.
 
 
-\subsubsection{Design Decisions}
+\subsubsection{Answers}
 \paragraph{One or more databases?}
 The system has to handle data from multiple sources and different usage types. For instance, the data-mining and statistics require a lot of write commands as opposed to reads, whereas the main website data, such as reviews and users, requires more read commands as opposed to writes. For this reason the usage of specialized databases for each would increase performance and scalability.
 
@@ -277,65 +200,3 @@ When new data is received, the rating and statistics need to be updated. This ca
 
 \paragraph{Flight-data usage}
 The stakeholder interest in flight-data was the decreasing of the weight of ratings during delays caused by things out of the hands of the company, such as bad weather, and to see a relation in the statistics between flight-data and the height of their rating. To ensure the integrity of the reviews and to improve the performance of the system, we advice against the use of flight-data to decrease the weight of reviews. By doing so we don't have to read from the database to get the flight-data to filter reviews thus saving resources and gaining performance. It also ensures the data integrity as it may be possible that flight-data is entered after bad reviews have already been added to the system. It is also the case that if a flight is delayed or cancelled the service from the airline company to accommodate the passengers is being put to the test. This should not be weighted less because the flight-data says the delay is due to bad weather.
-
-\section{Formal Design Decisions}
-
-This appendix states the design decisions that were taken during the process of designing an architecture. Figure \ref{fig:ddtree} shows the tree of the design decisions that will each be further elaborated on this section. 
-
-\begin{figure}[!ht]
-\includegraphics[width= 410px]{DDTree}
-\caption{The design decision tree}
-\label{fig:ddtree}
-\end{figure}
-
-\newpage
-\input{DataFormat}
-\input{FlightInformation}
-\newpage
-\input{Interfaces}
-\newpage
-\input{largeData-sets}
-\newpage
-\input{OnlinePayment}
-\newpage
-\input{recalculate-or-combine}
-\newpage
-\input{Split-up}
-\newpage
-\input{text-to-rating}
-
-\input{requirementsAppendix}
-
-
-\begin{thebibliography}{9}
-
-\bibitem{clemens}
-Bass et al.
-  \emph{Software Architecture in Practice}.
-  Addison Wesley, Boston,
-  3rd Edition,
-  2012.
-
-\bibitem{hayesroth}
- Hayes-Roth, F
- \emph{Architecture-Based Acquisition and Development of Software: Guidelines and Recommendations from the ARPA Domain-Speciﬁc
- Software Architecture (DSSA) Program},
- Teknowledge Federal Systems,
- 1994
-
-\bibitem{IEEE1471}
- IEEE Std 1471-2000,
- \emph{Recommended Practice for Architecture Description of Software-Intensive Systems},
- United States,
- 2000
-
-\bibitem{lane90}
-  Lane, Thomas,
-  \emph{Studying Software Architecture Through Design Spaces and Rules}.
-  Software Engineering Institute, Carnegie Mellon University,
-  1990.
-
-\end{thebibliography}
-
-\end{document}
-
