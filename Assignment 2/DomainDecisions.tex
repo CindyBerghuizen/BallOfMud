@@ -1,5 +1,4 @@
-
-\section{Domain Knowledge - Answers}
+\section{Domain Knowledge - Design Decision}
 In this appendix we will present the domain specific problems related to airline reputation management system. These provide a basis for making and finding the design decisions in Appendix B. 
 To divide the workload four separate directions were defined. These directions are highly interconnected and might not appear as separate in the final design. The four directions are:
 \begin{enumerate}
@@ -16,7 +15,7 @@ The purpose of this section is to ask domain specific question related to user e
 In order to get a better insight over the domain a market research was performed with related airline websites. In this research the importance was placed on the users and what they are looking for in a rating site. 
 The questions that  are important to the interfaces which affect user experience are:
 \begin{enumerate}
-\item What types of customers are distinguished in the system?
+\item How many and what types of customers are distinguished in the system?
 \item What kind of interactions should each customer be able to perform?
 \end{enumerate}
 
@@ -48,10 +47,9 @@ An overview of the functionalities available to these types of user is described
 	\end{enumerate}
 \end{itemize}
 
-The fact that these two types have clearly different functionalities results in two options concerning the system's interface, either two totally separate sites, or a general page 
-whose content will change depending on the signed in user but the lay out will be the same.
+The fact that these two types have clearly different functionalities results in two options concerning the system's interface, either two totally separate sites, or a general page whose content will change depending on the signed in user but the lay out will be the same.
 
-In addition to these types there are one more type and EU-Claim:
+In addition to these types there are also Guests and EU-Claim:
 \begin{itemize}
  \item Guests: Unregistered users who can only search for airlines and read reviews and ratings.
  \item EU-Claim: EU-Claim can monitor a private conversation after a user's invitation. Furthermore, is notified if a conversation is not ''resolved'' for a specified period of time.
@@ -60,9 +58,7 @@ In addition to these types there are one more type and EU-Claim:
 
 \subsection{Domain Specific Problems Related to Competition and Functionality}
 \subsubsection{Important Questions}
-The purpose of this section is to find the domain specific questions related to our functionality. To accomplish that, we searched in the internet to learn more about the competition
-and what they offer in order to adapt the system's architecture to focus on the functionalities that are going to differentiate from them. The questions that help FlyWithUs understand the 
-domain are:
+The purpose of this section is to find the domain specific questions related to our functionality. To accomplish that, we searched in the internet to learn more about the competition and what they offer in order to adapt the system's architecture to focus on the functionalities that are going to differentiate from them. The questions that help FlyWithUs understand the domain are:
 \begin{enumerate}
 \item Who is the biggest competitor of FlyWithUs?
 \item Is online payment necessary?

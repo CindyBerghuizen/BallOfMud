@@ -5,6 +5,8 @@
 \usepackage{hyperref}
 \usepackage{pdflscape}
 \usepackage{caption}
+\usepackage{longtable}
+
 \renewcommand{\arraystretch}{1.5}
 \captionsetup[table]{name=Design Decision,font={large,sf}}
 \begin{document}
@@ -73,211 +75,10 @@ requirements of the system of all the available users.
 \input{DataFlow}
 \input{FunctionalView}
 
-
 \appendix
 
-\section{Domain Knowledge - Design Decision}
-In this appendix we will present the domain specific problems related to airline reputation management system. These provide a basis for making and finding the design decisions in Appendix B. 
-To divide the workload four separate directions were defined. These directions are highly interconnected and might not appear as separate in the final design. The four directions are:
-\begin{enumerate}
-\item User Experience
-\item Competition and Functionality
-\item Data storage
-\item Data Gathering
-\end{enumerate}
-A separate section has been dedicated to each of the direction. 
-
-\subsection{Domain Specific Problems Related to User Experience}
-\subsubsection{Important Questions}
-The purpose of this section is to ask domain specific question related to user experience. The interface consists of all front-end systems that are directly in contact with the users. 
-In order to get a better insight over the domain a market research was performed with related airline websites. In this research the importance was placed on the users and what they are looking for in a rating site. 
-The questions that  are important to the interfaces which affect user experience are:
-\begin{enumerate}
-\item What types of customers are distinguished in the system?
-\item What kind of interactions should each customer be able to perform?
-\end{enumerate}
-
-\subsubsection{Design Decisions}
-During our meetings with the stakeholders it was made clear that there are two types of customers:
-\begin{enumerate} 
-\item Clients: In general, the people who write and read the reviews and ratings.
-\item Business Clients: The airline companies. The airline companies want to see a general overview of their companies ratings and reviews with some additional features such as the 
-reporting system (discussed in the next section).
-\end{enumerate}
-
-An overview of the functionalities available to these types of user is described below: 
-\begin{itemize}
-\item Clients (Registered Users):
-	\begin{enumerate}
-		\item They can write ({\em anonymously}), read and vote the reviews (Review System).
-        \item They can see and compare the ratings of different airline companies.
-        \item They can accept the invitation of an airline based on one of their reviews to a private conversation (Messaging System). 
-		\item They can Invite EU claim to a private conversation.
-	\end{enumerate}
-\item Business Clients (Airline Companies):
-	\begin{enumerate}
-		\item They can write feedback to a user's review.
-		\item They can invite a user to a private conversation based on a review in order to resolve his/ her complaint.
-		\item They can see the current ratings and/ or the latest (bad) reviews posted (Reporting System).
-		\item They can see statistics about their progress.
-		\item They can see their progress in comparison with other airline's progress (only if they share their information as well).
-		\item They can insert flight information and search through our databases to find patterns.
-	\end{enumerate}
-\end{itemize}
-
-The fact that these two types have clearly different functionalities results in two options concerning the system's interface, either two totally separate sites, or a general page 
-whose content will change depending on the signed in user but the lay out will be the same.
-
-In addition to these types there are one more type and EU-Claim:
-\begin{itemize}
- \item Guests: Unregistered users who can only search for airlines and read reviews and ratings.
- \item EU-Claim: EU-Claim can monitor a private conversation after a user's invitation. Furthermore, is notified if a conversation is not ''resolved'' for a specified period of time.
-\end{itemize}
-
-
-\subsection{Domain Specific Problems Related to Competition and Functionality}
-\subsubsection{Important Questions}
-The purpose of this section is to find the domain specific questions related to our functionality. To accomplish that, we searched in the internet to learn more about the competition
-and what they offer in order to adapt the system's architecture to focus on the functionalities that are going to differentiate from them. The questions that help FlyWithUs understand the 
-domain are:
-\begin{enumerate}
-\item Who is the biggest competitor of FlyWithUs?
-\item Is online payment necessary?
-\item How do the feedback and the messaging systems work?
-\item How will the reporting system work?
-\item How can results of FlyWithUs be protected?
-\item How is users' privacy ensured?
-\item Which features of the review format are going to ensure users' privacy?
-\end{enumerate}
-
-\subsubsection{Design Decisions}
-\paragraph{Competition} The greatest competitor seems to be http://www.airlinequality.com/. This site contains reviews about 681 airlines and 725 airports and uses a “star” rating 
-system called SKYTRAX. SKYTRAX has been used since 1999 and right now seems to be the only globally accepted airline rating system (is recognized as a global benchmark for airline 
-standards). Fortunately, it does not provide feedback and reporting system. Consequently it is recommended to focus these systems.
-
-\paragraph{Online Payment} It was requested that the services to the airlines are available after payment. The payment can either take place online or offline. In the first case, 
-the stakeholders are going to have an extra cost (fee: a percent of every transaction or predefined + 10\$ – 25\$ every month). On the other hand, since the 
-payment is addressed only to airline companies it is possible to do that offline through contracts, invoices etc.
-
-\paragraph{Feedback \& Messaging System} The platform of FlyWithUs provides to the airlines the opportunity to respond to a review if they believe it is necessary. (Feedback system)
-
-Additionally, an airline will be able to invite a user to a private conversation based on bad review in order to address an issue or to try to compensate him/ her. The user can choose 
-if he/ she wants to continue and if he/ she wishes to provide his/ her information.
-
-It is also significant to decide whether preserving the integrity of the system's  messaging service is desirable. To accomplish that, EU-Claim could be able to monitor the private 
-conversations. Although the user will be notified about this, it may still be against his/ her privacy. EU-Claim proposed this functionality to be available only if the user enables 
-it and not by default; the KLM representative and the initiator agreed with this as well.
-
-Furthermore, it is desirable for such a conversation to have states for example “resolved”  and “pending”, then a user can change its state from pending to resolved. As a result 
-EU-Claim can be notified by the system if a report has been unresolved for a certain period of time.  Additionally, the state of a conversation allows the system to calculate the resolved 
-issues and include that result in the website in order to encourage people to use the FlyWithUs platform.
-
-\paragraph{Reporting System} The reporting system is a functionality only available to airlines. Each airline will be able to monitor its rating status through a report webpage which will comprise of the following components:
-\begin{itemize}
-\item Statistics concerning its progress through graphs and diagrams.
-\item Latest reviews or bad reviews from our site.
-\item Cross-reference flight information with the reviews stored on our system.
-\item Comparison between airlines (only if the airline shares her information as well).
-\end{itemize}
-
-\paragraph{Prevent Aggregation – Copyright} The copyright of the data that will be collected should be further investigated according to the policy of each source. If the legality of 
-harvesting data from the other sources is resolved and even if the data gathered are public, the collection of the data on our system can be protected. This can be achieved because 
-even though the data are public a collection of them is copyrightable. Additionally, we can use a file called robots.txt to prevent data aggregation from specific crawlers. However, 
-the effectiveness of this file lies entirely on the crawlers because they can ignore the file. It appears that there are no architecture relevant decisions on this question.
-
-\paragraph{Users' Privacy} As it was mentioned in the section Feedback \& Messaging Systems, users' privacy is an important issue. This issue was raised by three of the stakeholders 
-Dutch government, EU-Claim and the initiator. A user's data and conversations with airlines are private, this means that these information are available only after user authentication 
-and in the case of the private conversation available only to the airline of interest (maybe to EU-Claim as well if the user requests that). 
-
-\paragraph{Review's Format} Since user's privacy is a big issue the review's format should allow anonymity. This is accomplished by omitting the name, username or any other author 
-identifier from the public representation of a review.
-
-\subsection{Domain specific problems related to data gathering and analysis}
-\subsubsection{Import questions}
-The purpose of this section is to explain domain related problems related with this task. The data gathering is responsible for polling external sources and providing the data to the storage system. This implicates two important question which are further elaborated next:
-\begin{enumerate}
-\item	How is the data from different external sources combined?
-\item	How is the combined data used in order to obtain a rating?
-\item	Is there any filtering process on the external data?
-\end{enumerate}
-The external sources vary from airline companies sites to review sites to social networks. These all have their own way of inputting a review. For instance, Twitter does not have any format related to the review and only consists of lines text, while review sites already have  a format in place that allows the user to rate some of the attributes (Food, timeliness, service etc.) on a given scale. The final application should be able to digest all these kinds of reviews and output the results on a scale . 
-A separate , however still important, question relates to the quality of the data. The external sources may or may not have systems in place that assure the quality of a review. Since the data is not inspected 
-
-\subsubsection{Design Decisions}
-
-\paragraph{Combining external sources}
-The sources have their own unique format as explained earlier in the document. If the system where to parse this into a general format information might get lost or lot's of information is undefined.
-However the general format helps decrease the complexity of analysing, because that system does not need to account for all the unique formats. This decision requires further collaboration with the data storage
-as that needs to be able to handle the data. 
-
-\paragraph{Analysing external sources}
-Not all external sources give a rating on a scale (e.g. Twitter) therefore these reviews need to be analysed first in order to be useful. There are multiple options available when analysing these results:
-\begin{enumerate}
-\item Drop all reviews that have no rating attached to them. This would lead to a huge data loss, but decrease the complexity of the system. The ratings can then easily be combined by computing a weighted average (or by another formula) of the individual ratings.
-\item Transform the reviews without ratings by performing a sentiment analysis. After the analysis the ratings can be combined the same as in the other option.
-\end{enumerate}
-
-\paragraph{Filtering}
-Some reviews may not be considered useful, because of certain properties. The system could apply some business rules in order to filter those reviews out. The business rules governing these reviews are however currently unknown. 
-
-
-
-
-\subsection{Domain specific problems related to data storage and analysis}
-\subsubsection{Import questions}
-This section lays out the domain related questions with data storage. In the earlier section analysis was inspected from a logical perspective. In this section the analysis is mainly inspected from a performance perspective. 
-The system is responsible for storing several kinds of data both from the local system as well as data from external sources. This implies several questions:
-\begin{enumerate}
-\item What kind of data does the system need to store?
-\item How big is the data from external sources?
-\item How does the system read and write the different data types?
-\end{enumerate}
-The system has to store information such as users, reviews, statistics, data from external sources, etc. Because of the variety of data types it is important to understand these data types and how the system utilizes this data.
-
-The data categories defined are:
-\begin{enumerate}
-\item Users: The system requires a user management system to log in and out on the web application. This user data needs to be stored persistently. An important quality attribute related to this user data is privacy, because it holds sensitive information.
-\item Reviews: The users should be able to read and write reviews on the website.
-\item Data from data-mining: The polling module (discussed previously) supplies the system with data from different external sources (e.g. Tripadvisor, Twitter). Because of the large amount of data scalability is a key quality attribute.
-\item Analysis results: The data from external sources is analysed to form a rating and calculate statistics for the airline companies. Performance is a key quality attribute here as these results are shown to a potentially large number of end users, as well as scalability as the statistical data grows fast over time.
-\end{enumerate}
-
-To get an idea of the amount of data we get from external sources, we use the following numbers. There currently exist over 600 airline companies. To calculate values for 600 companies one specific company (KLM) is taken and the values are extrapolated over the other airline companies:
-\begin{enumerate}
-\item Twitter: There are 1.4 Tweets per minute on KLM. This would indicate that there are approximately 600 * 1.4 * 60 * 24 = 1.008.000 tweets per day on airline companies
-\item Facebook: There are 101277 talking about KLM on Facebook. This would indicate that in total 60.766.200 posts are about airline companies
-\item Tripadvisor: There are currently 470 reviews on KLM. This indicates that there are 282.000 reviews on airline companies.
-\end{enumerate}
-The size of the data already shows that great care must be taken in the data-mining and analysis step regarding performance and scalability. As new external sources are added over time, this becomes of even greater importance.
-
-
-\subsubsection{Design Decisions}
-\paragraph{One or more databases?}
-The system has to handle data from multiple sources and different usage types. For instance, the data-mining and statistics require a lot of write commands as opposed to reads, whereas the main website data, such as reviews and users, requires more read commands as opposed to writes. For this reason the usage of specialized databases for each would increase performance and scalability.
-
-\paragraph{How many databases?}
-If more than one database is used than  the data needs to be split up while still keeping the system maintainable. 
-A this time we have several options:
-\begin{enumerate}
-\item Split up the main website data and data extracted from data-mining.
-\item Split up the main website data, data-mining data and statistical data.
-\item Split up the main website data and for each external source have a separate database containing the data-mined data.
-\end{enumerate}
-
-\paragraph{How do we handle large data-sets?}
-The data collected from external sources require a great amount of storage over time. In addition to that, all the incoming data has to be analysed to create new ratings and statistical data. For this data both performance and scalability are the most important attributes.
-By utilizing an event type system the load can be balanced and only write data after it has been analysed, thus decreasing the amount of reads and writes the database has to run. The implication is that data in the event handler/queue is not persistent to the database and may be lost in system failures.
-
-\paragraph{Always recalculate ratings or combine with the known value?}
-When new data is collected from external sources or when a review is made, the rating for the airline company needs to be updated. While a complete recalculation allows you to always change the weight of your external sources and reviews, it also means that over time more and more data has to be read from the database. Because of that the performance will deteriorate over time.
-To prevent this from happening, utilizing known values can greatly improve performance. By keeping track of the amount of tweets/reviews/etc received and the current rating, you only add the new input to those values by calculating the weight and the share it has on the total. By doing so you don't traverse the whole database thus greatly improving performance. If a recalculation is required this could always be initiated separately.
-
-\paragraph{Incremental or time-interval updates?}
-When new data is received, the rating and statistics need to be updated. This can either be done on a time-interval, such as once an hour, or using a queue and continuously update the data. To get the best performance and to safe on hardware cost, the latter is the most optimal solution. By spreading out the load, the machine does not need to handle high peaks and therefore you don't need to have a machine build to handle the peak when it happens. This means that the system required to run the updates can be run on a less powerful system thus saving cost. It also means that the data is always being updated and that the users get the most recent information possible.
-
-\paragraph{Flight-data usage}
-The stakeholder interest in flight-data was the decreasing of the weight of ratings during delays caused by things out of the hands of the company, such as bad weather, and to see a relation in the statistics between flight-data and the height of their rating. To ensure the integrity of the reviews and to improve the performance of the system, we advice against the use of flight-data to decrease the weight of reviews. By doing so we don't have to read from the database to get the flight-data to filter reviews thus saving resources and gaining performance. It also ensures the data integrity as it may be possible that flight-data is entered after bad reviews have already been added to the system. It is also the case that if a flight is delayed or cancelled the service from the airline company to accommodate the passengers is being put to the test. This should not be weighted less because the flight-data says the delay is due to bad weather.
-
+\input{DomainDecisions}
+\clearpage
 \section{Formal Design Decisions}
 
 This appendix states the design decisions that were taken during the process of designing an architecture. Figure \ref{fig:ddtree} shows the tree of the design decisions that will each be further elaborated on this section. 
@@ -288,25 +89,26 @@ This appendix states the design decisions that were taken during the process of 
 \label{fig:ddtree}
 \end{figure}
 
-\newpage
+\clearpage
 \input{DataFormat}
+\newpage
 \input{FlightInformation}
 \newpage
-\input{Interfaces}
-\newpage
+%\input{Interfaces}
+%\newpage
 \input{largeData-sets}
 \newpage
-\input{OnlinePayment}
-\newpage
+%\input{OnlinePayment}
+%\newpage
 \input{recalculate-or-combine}
 \newpage
 \input{Split-up}
 \newpage
 \input{text-to-rating}
-
+\clearpage
 \input{requirementsAppendix}
 
-
+\clearpage
 \begin{thebibliography}{9}
 
 \bibitem{clemens}
