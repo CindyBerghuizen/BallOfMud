@@ -1,0 +1,32 @@
+
+\captionof{table}{How is the data split up into multiple databases?}
+\begin{tabular}{ l  p{10cm}}
+\hline
+\bf Issue & The system deals with a lot of stored data, either new or already analysed and from a lot of different resources. How many databases gives a good maintainable system and allows for the best performance for all the different database usages?\\
+\hline
+\bf Decision & Split between data-mining (external and internal reviews statistics) and website data (users, conversations , ratings)\\
+\hline
+\bf Status & Decided\\
+\hline
+\bf Group & Data Storage \\
+\hline
+\bf Assumptions & At the very least there is website data, data-mining data and statistical data.\\
+\hline
+\bf Constraints & None \\
+\hline
+\bf Positions & All data is contained within one large database. \newline\newline
+Split between data-mining (external and internal reviews statistics) and website data (users, conversations , ratings)  \newline\newline
+Split between data-mining (external reviews), statistics on (external) reviews and website data (users, conversations , ratings)
+ \\
+\hline
+\bf Argument & Keeping all the data in one large database makes it very hard to scale and generally creates performance issues related with the amount of incoming data. 
+The third option leads to a greater number of databases. However the statistics are heavily related to the reviews themselves (data mining) splitting these two up creates fragmented data. 
+ \\
+\hline
+\bf Implications & There is a need for multiple databases that have some relation to each other. These relations need to be clearly defined in order for the system need to completely get out of synch. \\
+\hline
+\bf Related decisions & How do we handle large data-sets? \\
+\hline
+\bf Related requirements  & Data Storage, Performance, Scalability\\
+\hline
+\end{tabular}

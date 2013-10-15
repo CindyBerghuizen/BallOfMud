@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+\usepackage{caption}
+\usepackage{longtable}
+
+\renewcommand{\arraystretch}{1.5}
+\captionsetup[table]{name=Design Decision,font={large,sf}}
+\begin{document}
+\title{Software Architecture}
+\author{Chiel Peters, Omar Pakker, Mary Gouseti, Cindy Berghuizen}
+\maketitle
+\setlength\parindent{0pt}
+
+\section{Introduction}
+This document provides the architectural decisions together with the learning process. In the first section, multiple definitions of software architecture and our own view of architecture are given. Then the stakeholders are identified together with their concerns.
+The third section contains multiple viewpoints on the architecture of the FlyWithUs system. Finally, Appendix A contains the results of the domain research performed early in the designing process and Appendix B contains the design decisions presented more formally.
+
+\section{Definition of Architecture}
+
+First four definitions of software architecture are stated and their differences
+and similarities are discussed. Second, our own view on software architecture is
+given.
+\subsection{Definitions on architectures}
+
+\begin{enumerate}
+\item Software Architecture is the set of structures needed to reason about the software system, which comprise the software elements, the relations between them, and the properties of both elements and relations.\cite{clemens}
+
+\item Software Architecture is an abstract system specification consisting primarily of functional components described in terms of their behaviours and interfaces and component-component interconnections\cite{hayesroth}
+
+\item Software Architecture is the fundamental organization of a system embodied in its components, their relationships to each other, and to the environment, and the principles guiding its design and evolution.\cite{IEEE1471}
+
+\item Software architecture is the study of the large-scale structure and performance of software systems. Important aspects of a system's architecture include the division of functions among system modules, the means of communication between modules, and the representation of shared information.\cite{lane90}
+
+\end{enumerate}
+
+These definitions share the same fundamental idea that software architecture
+is a set of structures/components/modules including their properties and the
+relationships between them. However, each of the definitions highlights certain
+aspects of architecture more than the others. 
+\begin{itemize}
+\item In \cite{clemens} and \cite{hayesroth} the focus has been put on the end result. The architecture 
+is defined as the components themselves (their properties/interfaces) and the relationships between them (interconnections).
+\item The definition stated in \cite{hayesroth} lays a focus on the functional components of a software architecture. With words like functional components, 
+behaviours and interfaces underlines the importance of declaring the way the components interact with each other.
+\item The definition of \cite{IEEE1471} is not limited only to the systems components, their functionalities and connections but also includes in the definition the 
+process of designing and maintaining an architecture. It explicitly states that the design process and the evolution are part of the architecture itself.
+\item The last definition (\cite{lane90}) presents architecture as the study of a system's structure. As a result architecture contains the modules and the connections between them that build the system. This also becomes clear
+from the title of the article \emph{Studying Software Architecture Through Design Spaces and Rules}.
+
+\end{itemize}
+
+\subsection{Our view on architecture}
+As the definitions mentioned above, we also agree on the point that a software architecture is defined as a set of components, their properties, behaviours and the relations
+between. However, we think that architecture is not only the structure of a software system but also contains the main design decisions that would explain why the system consists of 
+these components and include the stakeholders' quality attributes that lead the architects to those decisions. \\ 
+
+Our definition of software architecture would be:
+Software architecture is the structure of a software system along with the decisions that lead to this structure. To elaborate, architecture contains the components by which
+the system is build up, their functionality, the relations between them and the reason of their existence meaning which requirement of the stakeholders or quality attribute they accomplish. 
+%stakeholderpart
+\input{StakeholderConcerns}
+
+%Input viewpoints here
+\section{Viewpoints}
+
+This section contains three viewpoints on the architecture. These viewpoints were mainly due to the stakeholders concerns. The privacy view provides EU-Claim and the Dutch government the information related to their
+main concerns. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last view shows the functional
+requirements of the system of all the available users. 
+
+\input{PrivacyView}
+\input{DataFlow}
+\input{FunctionalView}
+
+\appendix
+
+\input{DomainDecisions}
+\clearpage
+\section{Formal Design Decisions}
+
+This appendix states the design decisions that were taken during the process of designing an architecture. Figure \ref{fig:ddtree} shows the tree of the design decisions that will each be further elaborated on this section. 
+
+\begin{figure}[!ht]
+\includegraphics[width= 410px]{DDTree}
+\caption{The design decision tree}
+\label{fig:ddtree}
+\end{figure}
+
+\clearpage
+\input{DataFormat}
+\newpage
+\input{FlightInformation}
+\newpage
+%\input{Interfaces}
+%\newpage
+\input{largeData-sets}
+\newpage
+%\input{OnlinePayment}
+%\newpage
+\input{recalculate-or-combine}
+\newpage
+\input{Split-up}
+\newpage
+\input{text-to-rating}
+\clearpage
+\input{requirementsAppendix}
+
+\clearpage
+\begin{thebibliography}{9}
+
+\bibitem{clemens}
+Bass et al.
+  \emph{Software Architecture in Practice}.
+  Addison Wesley, Boston,
+  3rd Edition,
+  2012.
+
+\bibitem{hayesroth}
+ Hayes-Roth, F
+ \emph{Architecture-Based Acquisition and Development of Software: Guidelines and Recommendations from the ARPA Domain-Speciﬁc
+ Software Architecture (DSSA) Program},
+ Teknowledge Federal Systems,
+ 1994
+
+\bibitem{IEEE1471}
+ IEEE Std 1471-2000,
+ \emph{Recommended Practice for Architecture Description of Software-Intensive Systems},
+ United States,
+ 2000
+
+\bibitem{lane90}
+  Lane, Thomas,
+  \emph{Studying Software Architecture Through Design Spaces and Rules}.
+  Software Engineering Institute, Carnegie Mellon University,
+  1990.
+
+\end{thebibliography}
+
+\end{document}
+
