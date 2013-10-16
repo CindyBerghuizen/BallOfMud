@@ -8,13 +8,13 @@ The functional requirements are given in prioritzation order, the first requirem
 \hline
 \textbf{Requirement} & \textbf{Abbreviation} & \textbf{Related stakeholder} \\ \hline
 Show the ratings and reviews of all airlines to all users & Show ratings & Init \\ \hline
-Post, read and search reviews including ratings & Post/Read/Search & Init \\ \hline
+Post, read, vote and search reviews including ratings & Post/Read/Search & Init \\ \hline
 A messaging system where airlines can get in touch with customers & Messaging & Init, KLM\\ \hline
 Collect data from external sources like twitter and tripadviser & Data gathering &Init, KLM \\ \hline
 Combine the data from external sources to an airline rating & Data combining &Init, KLM \\ \hline
 A reporting tool & Reporting & KLM \\ \hline
 A transparant and fair way to calculate the airline ratings & Transparancy & EUC \\ \hline
-A way to store the data from the external sources & Data Storage & Init \\ \hline
+The system should be able to keep track of the B2B users for offline payment & billing & Init \\ \hline
 Provide flight information to influence the weight of a review & Flight Information & KLM  \\ \hline
 The ability to see the statistics of other airlines if permission is granted & Statistics & KLM \\ \hline 
 % Airlines cannot statistics about each other if permission is not granted
@@ -27,10 +27,10 @@ The non-functional requirements are given in prioritzation order, the first requ
 \begin{longtable}{| p{10cm}| l | l |}
 \hline
 \textbf{Requirement} & \textbf{Abbreviation} & \textbf{Related stakeholder} \\ \hline
-The system should give the data within reasonable time & Performance & Init, KLM \\ \hline
-The user data should be private & Privacy & Dg, EUC \\ \hline
+The system should give the data within two seconds & Performance & Init, KLM \\ \hline
+The user data should only be available for the user itself and not for the public. & Privacy & Dg, EUC \\ \hline
 Scalability is needed for both the users and the amount of reviews.& Scalability & Init \\ \hline
-New external datasources should be easy to add & Adding datasources & Init \\ \hline
+External datasources should be addable without affecting the rest of the system  & Adding datasources & Init \\ \hline
 The server needs to be hosted in the Netherlands & Hosting & Dg, EUC \\ \hline
 The project should be a GreenIT project & GreenIT & Dg\\ \hline
 \end{longtable}
