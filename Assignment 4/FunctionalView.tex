@@ -5,7 +5,7 @@
 \begin{itemize}
 \item Related stakeholders: KLM, Initiator, EU-Claim
 \item Related Concerns: Users of the system, Available functionality to each user group, Grouping functionalities
-\item Related design decisions: EU-Claim can see private conversation after invitation, Online payment system (Discarded), Functionalities of Reporting System.
+\item Related design decisions: EU-Claim can see private conversation after invitation, Billing system added, Functionalities of Reporting System.
 \end{itemize}
 
 \newpage
@@ -17,14 +17,13 @@
 \end{figure}
 \end{landscape}
 
-The functional viewpoint (Fig.~\ref{fig:functional}) illustrates the functionality supported by the system and its connections to the users. The direction of the arrows shows the initiator of its connection, for example EU-Claim can monitor a conversation and the system notifies EU-Claim about an issue that has been unresolved for a configurable period of time. The functionalities that are based in the same entities of the system are grouped together to help the reader understand their connections. For example, all the functionalities 
- provided only to airlines are included in a {\em report} as a result these functionalities are grouped in the {\em Report System}. The association between the subsystems presented in the viewpoint and the functional requirements listed in table~\ref{} is shown in table~\ref{tab:associateSysReq}.
+The functional viewpoint (Fig.~\ref{fig:functional}) illustrates the functionality supported by the system and its connections to the users. The direction of the arrows shows who or what initiates this connection, for example EU-Claim can monitor a conversation (initiated by EU-Claim) but  the system notifies EU-Claim about an issue that has been unresolved for a configurable period of time (initiated by Messaging module). The functionalities that are based in the same entities of the system are grouped together to help the reader understand their connections. For example, all the functionalities  provided only to airlines are included in a {\em report} as a result these functionalities are grouped in the Report module. The association between the modules presented in the viewpoint and the functional requirements listed in table~\ref{} is shown in table~\ref{tab:associateSysReq}.
 
 \begin{longtable}{| l | l | l |}
 \label{tab:associateSysReq}
 \textbf{Requirement} & \textbf{System} & \textbf{Users} \\ \hline
 Show ratings & Review System & Guests, Registered Users  \\ \hline
-Post/Read/Search/Vote!!!! & Review System & Registered Users \\ \hline
+Post/Read/Search/Vote & Review System & Registered Users \\ \hline
 Messaging & Messaging System & Registered Users, Airlines, EUC\\ \hline
 Reporting  & Reporting System & Airlines \\ \hline
 Flight Information & Reporting System & Airlines  \\ \hline
@@ -32,6 +31,32 @@ Statistics & Reporting System & Airlines \\ \hline
 
 \end{longtable}
 
- Furthermore, the viewpoint also presents the availability of the functionalities to each user group and the communication between these groups through the system. For instance, a guest can register or log in the system and  become a registered user, or an airline can invite a user to a private conversation in order to resolve a potential complaint; then the user can accept the invitation and he/ she can 
- also invite EU-Claim to monitor their conversation to ensure the integrity of this process.
+ Furthermore, the viewpoint also presents the availability of the functionalities to each user group and the communication between these groups through the system. For instance, a guest can register or log in the system and  become a registered user, or an airline can invite a user to a private conversation in order to resolve a potential complaint; then the user can accept the invitation and he can  also invite EU-Claim to monitor their conversation to ensure the integrity of this process.
 
+Each entity presented in the viewpoint is discussed in the following sections.
+
+\subsubsection{Users}
+\paragraph{Guests.} A guest is a user of our system with no account. He can read reviews and search for ratings using the R\&R module. Furthermore, a guest can  register or log in the Authentication module.
+\paragraph{Registered User.} A registered user can read, write and vote reviews and search for rating using the R\&R module. Additionally, he can communicate with an airline through the Messaging module in private, meaning that other parties  (except for EU-Claim and only if it is invited) cannot read this conversation.
+\paragraph{Airlines.} An airline represents the airlines that have payed membership in FlyWithUs. An airline can monitor its progress checking the Report module. Also an airline can see statistics, ratings and search according to flight information it can provide. 
+
+Additionally, as far as customer satisfaction is concerned, an airline can write feedback to a review posted on the R\&R module or invite a user to a private conversation through the Messaging module.
+
+Finally, it can be informed about the status of its membership thought the Billing module.
+
+\paragraph{EU-Claim.} In order to ensure the integrity of the system, EU-Claim will have separate accounts that will enable her to monitor conversations when she is invited and also notify her of a conversation is unresolved for a configurable period of time.
+
+\paragraph{FlyWithUs Employee.} FlyWithUs employee is an employee of FlyWithUs whose responsibility is to update or check the membership status of the airline according to their payments.
+
+\subsubsection{Modules}
+\paragraph{Review \& Rating Module.} This module is responsible for inserting new internal reviews on the system, vote reviews and provides the search interface to the registered users and guests. This module allows searching according to specific rating fields for example which airline has the best food or the best client support, or according to general ratings. 
+
+The R\& R module does not allow the users to  edit or delete their rating in order to preserve the system's consistency and integrity.
+
+\paragraph{Report Module.} This module provides the tools to the airlines to monitor their progress. It shows statistics about the airline progress, the latest reviews on FlyWithUs and also allows the airlines to use advance search, which enables them to insert flight information or other parameters and search through our database.
+
+\paragraph{Messaging Module.} This module is responsible for the private conversations between the registered users and the airlines. At first, an airline declares that wishes to contact the author of a review, then the author is invited to a private conversation. If the author accepts it can invite EU-Claim to monitor this conversation through this module. Additionally, this module keeps track of all the resolved and unresolved issues, it can provide statistics and it can also notify EU-Claim if a conversation has been unresolved for a configurable (by EU-Claim) period of time. Only the affiliated parties of a conversation can read this conversation as a result the Messaging module checks the identity of the user before it grants him access.
+
+\paragraph{Billing Module.} This module is responsible for keeping track of the membership status of the airlines. It will notify both the FlyWithUs employee and the associated airline if there is a late payment and in case that the airline's membership is not renewed it will revoke the airline's access to the Reporting module.
+
+\paragraph{Authentication Module.} This module is responsible for the registration of new users and for signing in existing users and identifying their type.
