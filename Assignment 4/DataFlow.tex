@@ -22,7 +22,7 @@ In the related design decisions it was argumented that combining the rating with
 
 \subsubsection{Polling}
 
-The polling module is responsible for obtaining reviews from external data sources. It polls every external source on a given timeframe which is different for each external source. The reviews are not formatted and there original data format from the external source is kept). The rationale behind the decision is that all the reviews from external sources are significantly different of each other parsing them into a general format would lead to data loss or lot's of undefined fields. The decision is further elaborated in the appendix at \ref{xxx}. The unformatted reviews are then passed on to the event handler as events. An event is defined as a single unformatted review either from external or internal sources. 
+The polling module is responsible for obtaining reviews from external data sources. It polls every external source on a given timeframe which is different for each external source. The reviews are not formatted and there original data format from the external source is kept. The rationale behind the decision is that all the reviews from external sources are significantly different of each other parsing them into a general format would lead to data loss or lot's of undefined fields. The decision is further elaborated in the appendix at \ref{xxx}. The unformatted reviews are then passed on to the event handler as events. An event is defined as a single unformatted review either from external or internal sources. 
 
 \subsubsection{Event handler}
 
@@ -30,11 +30,21 @@ The event handler receives the events from both the polling module (external sou
 
 \subsubsection{Analytics}
 
-Each data source has its own analytics module, because the data must be treated differently from external sources as they are of different format. The seperate analytics modules have the added benefit of allowing for meta-analysis specific to a given data source. An example could be the amount of followers on twitter.  
+Each data source has its own analytics module, because the data must be treated differently from external sources as they are of different format. The seperate analytics modules have the added benefit of allowing for meta-analysis specific to a given data source. An example could be the amount of followers on twitter.
 
-The analytics module analyzes the unformatted review and produces a rating on a given scale for a certain or multiple categories (Overall, food , timeliness etc.). The unformatted review together with the analyzed ratings are then stored in the analytics database of the data source. The ratings are also send of the combine ratings in order to update the rating of the airline that is related to the review.
+The analytics module analyzes the unformatted review and produces a rating on a given scale for a certain or multiple categories (Overall, food , timeliness etc.). The unformatted review together with the analyzed ratings are then stored in the analytics database of the data source. This is a requirement by the Initatior and KLM. The decision is further discussed in the appendix \ref{xxx}. The ratings are also send of the combine ratings module in order to update the rating of the airline that is related to the review.
 
 \subsubsection{Combine Ratings}
 
-The combine ratings module is responsible for combining the ratings from the individual reviews into a final rating for an airline. The module receives the ratings from the analytics module and obtains the old rating from the main database. These two can are combined in order to form a new rating. The process of iterativly combining ratings instead of recalculating is made for performance reasons as it is much cheaper and efficient to not recalculate the ratings that are already in the final rating of the airline. This decision is discussed in the appendix at \ref{xxx}
+The combine ratings module is responsible for combining the ratings from the individual reviews into a final rating for an airline. The module receives the ratings from the analytics module and obtains the old rating from the main database. These two are combined in order to form a new rating. The process of iterativly combining ratings instead of recalculating is made for performance reasons as it is much cheaper and efficient to not recalculate the ratings that are already in the final rating of the airline. This decision is discussed in the appendix at \ref{xxx}. The ratings are based on an airline and a specific category (overall, timeliness, food etc.).
 
+\subsubsection{Modules}
+The functionalitiy of each of the modules is discussed in the functional view. Hence in this section only the data flow regarding to each of the modules is discussed:
+
+\begin{enumerate}
+\item \emph{R & R module} A new review is inserted as event into the event handlerwhich can pass it off to the specific analytics module. The decision was made to save the internal reviews twice: once in the main database and once when the they are analyzed in the Analytics database. This allows the users to see the reviews without accessing the analytics database, but increases overhead as the same data is almost saved twice.
+\item \emph{Reporting module} The reporting module retrieves information from the analytics database which contain all the analyzed data together with the raw reviews. It must also be able to access the main database for the latest final ratings.
+\item \emph{Authentication module} The user data for logging purposes is saved in the main database. The data contains sensitive information and is therefore encrypted.
+\item \emph{Billing module} In order to make a profit airlines need to pay for their functionality. Therefore the billing module is able to read the current enlisted airlines and write to the database if the airlines have paid or not.
+\item \emph{Messaging module} The messages are saved seperately in the main database. Because they can contain user sensitive information (e.g. Flight numbers, names) the whole messages are saved in an encrypted form. 
+\end{enumerate}
