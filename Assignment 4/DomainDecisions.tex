@@ -13,27 +13,37 @@ A separate section has been dedicated to each of the direction.
 \subsubsection{Important Questions}
 The purpose of this section is to ask domain specific question related to user experience. The interface consists of all front-end systems that are directly in contact with the users. 
 In order to get a better insight over the domain a market research was performed with related airline websites. In this research the importance was placed on the users and what they are looking for in a rating site. 
-The questions that  are important to the interfaces which affect user experience are:
+The questions that are important to the interfaces which affect user experience are:
 \begin{enumerate}
 \item How many and what types of customers are distinguished in the system?
 \item What kind of interactions should each customer be able to perform?
 \end{enumerate}
 
 \subsubsection{Answers}
-During our meetings with the stakeholders it was made clear that there are two types of customers:
-\begin{enumerate} 
-\item Clients: In general, the people who write and read the reviews and ratings.
-\item Business Clients: The airline companies. The airline companies want to see a general overview of their companies ratings and reviews with some additional features such as the 
-reporting system (discussed in the next section).
-\end{enumerate}
 
-An overview of the functionalities available to these types of user is described below: 
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{How many and what types of customers are distinguished in the system?}  \\ \hline
+\textbf{Answer} & During our meetings with the stakeholders it was made clear that there are two types of customers:
+	\begin{enumerate} 
+	\item Clients: In general, the people who write and read the reviews and ratings.
+	\item Business Clients: The airline companies. The airline companies want to see a general overview of their companies ratings and reviews with some additional features such as the 
+	reporting system (discussed in the next section).
+	\end{enumerate} \\ \hline
+\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & NaN \\ \hline
+\end{longtable}
+
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{What kind of interactions should each customer be able to perform?}  \\ \hline
+\textbf{Answer} &
 \begin{itemize}
 \item Clients (Registered Users):
 	\begin{enumerate}
 		\item They can write ({\em anonymously}), read and vote the reviews (Review System).
-        \item They can see and compare the ratings of different airline companies.
-        \item They can accept the invitation of an airline based on one of their reviews to a private conversation (Messaging System). 
+       		 \item They can see and compare the ratings of different airline companies.
+        	\item They can accept the invitation of an airline based on one of their reviews to a private conversation (Messaging System). 
 		\item They can Invite EU claim to a private conversation.
 	\end{enumerate}
 \item Business Clients (Airline Companies):
@@ -45,15 +55,18 @@ An overview of the functionalities available to these types of user is described
 		\item They can see their progress in comparison with other airline's progress (only if they share their information as well).
 		\item They can insert flight information and search through our databases to find patterns.
 	\end{enumerate}
-\end{itemize}
-
+\end{itemize} 
 The fact that these two types have clearly different functionalities results in two options concerning the system's interface, either two totally separate sites, or a general page whose content will change depending on the signed in user but the lay out will be the same.
-
 In addition to these types there are also Guests and EU-Claim:
-\begin{itemize}
- \item Guests: Unregistered users who can only search for airlines and read reviews and ratings.
- \item EU-Claim: EU-Claim can monitor a private conversation after a user's invitation. Furthermore, is notified if a conversation is not ''resolved'' for a specified period of time.
-\end{itemize}
+	\begin{itemize}
+ 	\item Guests: Unregistered users who can only search for airlines and read reviews and ratings.
+ 	\item EU-Claim: EU-Claim can monitor a private conversation after a user's invitation. Furthermore, is notified if a conversation is not ''resolved'' for a specified period of time.
+	\end{itemize}
+\\ \hline
+\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & \textcolor{red}{Separate interfaces for Clients and Business Clients} \\ \hline
+\end{longtable}
+
 
 
 \subsection{Domain Specific Problems Related to Competition and Functionality}
