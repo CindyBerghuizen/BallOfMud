@@ -1,0 +1,12 @@
+\subsection{Minor Design Decisions}
+In this subsection the minor design decisions are stated. Those decisions do not have a great impact on the architecture but should still be known and considered. 
+
+\begin{itemize}
+\item B2B / B2C interfaces will be seperated. Although the B2B / B2C interfaces have some commonalities we will split them up. This makes it more modifiable if one of the two interfaces need some changes in functionality.  For professionalty the B2B will have a different layout as well.
+
+\item The airlines need to pay FlyWithUs for using the services. Therefore a billing module will be added to register the paying airlines. 
+
+\item The user data will be in a seperate encrypted database to guarantee the user privacy.
+
+\item User data will not be shown in the reviews, a serial ID will be shown instead. This is to guarantee the privacy of the user.
+\end{itemize}
