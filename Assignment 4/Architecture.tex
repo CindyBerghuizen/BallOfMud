@@ -49,8 +49,8 @@ In  section~\ref{sec:definition}, the definition of architecture is discussed, i
 First four definitions of software architecture are stated and their differences
 and similarities are discussed. Second, our own view on software architecture is
 given.
-\subsection{Definitions on architectures}
 
+\subsection{Definitions on architectures}
 \begin{enumerate}
 \item Software Architecture is the set of structures needed to reason about the software system, which comprise the software elements, the relations between them, and the properties of both elements and relations.\cite{clemens}
 
@@ -59,13 +59,11 @@ given.
 \item Software Architecture is the fundamental organization of a system embodied in its components, their relationships to each other, and to the environment, and the principles guiding its design and evolution.\cite{IEEE1471}
 
 \item Software architecture is the study of the large-scale structure and performance of software systems. Important aspects of a system's architecture include the division of functions among system modules, the means of communication between modules, and the representation of shared information.\cite{lane90}
-
 \end{enumerate}
 
-These definitions share the same fundamental idea that software architecture
-is a set of structures/components/modules including their properties and the
-relationships between them. However, each of the definitions highlights certain
-aspects of architecture more than the others. 
+These definitions share the same fundamental idea that software architecture is a set of structures/components \newline
+/modules including their properties and the relationships between them. However, each of the definitions highlights certain aspects of architecture more than the others.
+
 \begin{itemize}
 \item In \cite{clemens} and \cite{hayesroth} the focus has been put on the end result. The architecture 
 is defined as the components themselves (their properties/interfaces) and the relationships between them (interconnections).
@@ -75,12 +73,10 @@ behaviours and interfaces underlines the importance of declaring the way the com
 process of designing and maintaining an architecture. It explicitly states that the design process and the principles guiding change are part of the architecture itself.
 \item The last definition (\cite{lane90}) presents architecture as the study of a system's structure. As a result architecture contains the modules and the connections between them that build the system. This also becomes clear
 from the title of the article \emph{Studying Software Architecture Through Design Spaces and Rules}.
-
 \end{itemize}
 
 \subsection{Our view on architecture}
-As the definitions mentioned above, we also agree on the point that a software architecture is defined as a set of components, their properties, behaviours and the relations
-between. However, we think that architecture is not only the structure of a software system but also contains the main design decisions that would explain why the system consists of 
+We agree with the definitions above on the point that a software architecture is defined as a set of components, their properties, behaviours and the relations between. However, we think that architecture is not only the structure of a software system but also contains the main design decisions that would explain why the system consists of 
 these components and include the stakeholders' quality attributes that lead the architects to those decisions. \\ 
 
 Our definition of software architecture would be:
@@ -92,7 +88,7 @@ the system is build up, their functionality, the relations between them and the 
 
 %Input viewpoints here
 \section{Viewpoints}
- \label{sec:viewpoints}
+\label{sec:viewpoints}
 This section contains three viewpoints on the architecture. These viewpoints were mainly designed to show that this solution satisfies the stakeholders' concerns. The functional viewpoint shows the functional requirements of the system and all the available users. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last viewpoint shows the concurrency within the system to see which processes can run in parallel and which must be made redundant to avoid single points of failure.
 
 \input{FunctionalView}
