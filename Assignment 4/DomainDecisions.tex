@@ -27,18 +27,18 @@ The questions that are important to the interfaces which affect user experience 
 \textbf{Answer} & During our meetings with the stakeholders it was made clear that there are two types of customers:
 	\begin{enumerate} 
 	\item Clients: In general, the people who write and read the reviews and ratings.
-	\item Business Clients: The airline companies. The airline companies want to see a general overview of their companies ratings and reviews with some additional features such as the 
+	\item Business Clients: The airline companies. The airline companies want to see a general overview of their companies ratings 			and reviews with some additional features such as the 
 	reporting system (discussed in the next section).
 	\end{enumerate} \\ \hline
-\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
 \textbf{Design Decisions} & NaN \\ \hline
 \end{longtable}
+\clearpage
 
 \begin{longtable}{| l |  p{12cm} |}
 \hline
 \textbf{Question} & \textbf{What kind of interactions should each customer be able to perform?}  \\ \hline
-\textbf{Answer} &
-\begin{itemize}
+\textbf{Answer} &\begin{itemize}
 \item Clients (Registered Users):
 	\begin{enumerate}
 		\item They can write ({\em anonymously}), read and vote the reviews (Review System).
@@ -63,7 +63,7 @@ In addition to these types there are also Guests and EU-Claim:
  	\item EU-Claim: EU-Claim can monitor a private conversation after a user's invitation. Furthermore, is notified if a conversation is not ''resolved'' for a specified period of time.
 	\end{itemize}
 \\ \hline
-\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
 \textbf{Design Decisions} & \textcolor{red}{Separate interfaces for Clients and Business Clients} \\ \hline
 \end{longtable}
 
@@ -73,7 +73,6 @@ In addition to these types there are also Guests and EU-Claim:
 \subsubsection{Important Questions}
 The purpose of this section is to find the domain specific questions related to our functionality. To accomplish that, we searched in the internet to learn more about the competition and what they offer in order to adapt the system's architecture to focus on the functionalities that are going to differentiate from them. The questions that help FlyWithUs understand the domain are:
 \begin{enumerate}
-\item Who is the biggest competitor of FlyWithUs?
 \item Is online payment necessary?
 \item How do the feedback and the messaging systems work?
 \item How will the reporting system work?
@@ -83,76 +82,149 @@ The purpose of this section is to find the domain specific questions related to 
 \end{enumerate}
 
 \subsubsection{Answers}
-\paragraph{Competition} The greatest competitor seems to be http://www.airlinequality.com/. This site contains reviews about 681 airlines and 725 airports and uses a “star” rating 
-system called SKYTRAX. SKYTRAX has been used since 1999 and right now seems to be the only globally accepted airline rating system (is recognized as a global benchmark for airline 
-standards). Fortunately, it does not provide feedback and reporting system. Consequently it is recommended to focus these systems.
+%\paragraph{Competition} The greatest competitor seems to be http://www.airlinequality.com/. This site contains reviews about 681 airlines and 725 airports and uses a “star” rating 
+%system called SKYTRAX. SKYTRAX has been used since 1999 and right now seems to be the only globally accepted airline rating system (is recognized as a global benchmark for airline 
+%standards). Fortunately, it does not provide feedback and reporting system. Consequently it is recommended to focus these systems.
 
-\paragraph{Online Payment} It was requested that the services to the airlines are available after payment. The payment can either take place online or offline. In the first case, 
-the stakeholders are going to have an extra cost (fee: a percent of every transaction or predefined + 10\$ – 25\$ every month). On the other hand, since the 
-payment is addressed only to airline companies it is possible to do that offline through contracts, invoices etc.
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{Is online payment necessary?}  \\ \hline
+\textbf{Answer} &
+	 It was requested that the services to the airlines are available after payment. The payment can either take place online or offline. In the first case, 
+	the stakeholders are going to have an extra cost (fee: a percent of every transaction or predefined + 10\$ – 25\$ every month). On the other hand, since the 
+	payment is addressed only to airline companies it is possible to do that offline through contracts, invoices etc.
+	The stakeholders informed us that they want to have an automated billing system. \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & \textcolor{red}{Billing system} \\ \hline
+\end{longtable}
 
-\paragraph{Feedback \& Messaging System} The platform of FlyWithUs provides to the airlines the opportunity to respond to a review if they believe it is necessary. (Feedback system)
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{How do the feedback and the messaging systems work?}  \\ \hline
+\textbf{Answer} &
+	The platform of FlyWithUs provides to the airlines the opportunity to respond to a review if they believe it is necessary. (Feedback system)\newline
 
-Additionally, an airline will be able to invite a user to a private conversation based on bad review in order to address an issue or to try to compensate him/ her. The user can choose 
-if he/ she wants to continue and if he/ she wishes to provide his/ her information.
+	Additionally, an airline will be able to invite a user to a private conversation based on a bad review in order to address an issue or to try to compensate him/ her. The user can choose 
+	if he/ she wants to continue and if he/ she wishes to provide his/ her information. \newline
 
-It is also significant to decide whether preserving the integrity of the system's  messaging service is desirable. To accomplish that, EU-Claim could be able to monitor the private 
-conversations. Although the user will be notified about this, it may still be against his/ her privacy. EU-Claim proposed this functionality to be available only if the user enables 
-it and not by default; the KLM representative and the initiator agreed with this as well.
+	It is also significant to decide whether preserving the integrity of the system's  messaging service is desirable. To accomplish that, the a User is able to invite EU-Claim to a conversation. \newline
 
-Furthermore, it is desirable for such a conversation to have states for example “resolved”  and “pending”, then a user can change its state from pending to resolved. As a result 
-EU-Claim can be notified by the system if a report has been unresolved for a certain period of time.  Additionally, the state of a conversation allows the system to calculate the resolved 
-issues and include that result in the website in order to encourage people to use the FlyWithUs platform.
+	Furthermore, it is desirable for such a conversation to have states for example “resolved”  and “pending”, then a user can change its state from pending to resolved. As a result 
+	EU-Claim can be notified by the system if a report has been unresolved for a certain period of time.  Additionally, the state of a conversation allows the system to calculate the resolved 
+	issues and include that result in the website in order to encourage people to use the FlyWithUs platform. \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & NaN \\ \hline
+\end{longtable}
 
-\paragraph{Reporting System} The reporting system is a functionality only available to airlines. Each airline will be able to monitor its rating status through a report webpage which will comprise of the following components:
-\begin{itemize}
-\item Statistics concerning its progress through graphs and diagrams.
-\item Latest reviews or bad reviews from our site.
-\item Cross-reference flight information with the reviews stored on our system.
-\item Comparison between airlines (only if the airline shares her information as well).
-\end{itemize}
+\clearpage
 
-\paragraph{Prevent Aggregation – Copyright} The copyright of the data that will be collected should be further investigated according to the policy of each source. If the legality of 
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{How will the reporting system work?}  \\ \hline
+\textbf{Answer} &
+	The reporting system is a functionality only available to airlines. Each airline will be able to monitor its rating status through a report webpage which will comprise of the following components:
+	\begin{itemize}
+	\item Statistics concerning its progress through graphs and diagrams.
+	\item Latest reviews or bad reviews from our site.
+	\item Cross-reference flight information with the reviews stored on our system.
+	\item Comparison between airlines (only if the airline shares her information as well).
+	\end{itemize}
+ \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & Flight Information \\ \hline
+\end{longtable}
+
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{How can results of FlyWithUs be protected?}  \\ \hline
+\textbf{Answer} &
+	The copyright of the data that will be collected should be further investigated according to the policy of each source. If the legality of 
 harvesting data from the other sources is resolved and even if the data gathered are public, the collection of the data on our system can be protected. This can be achieved because 
 even though the data are public a collection of them is copyrightable. Additionally, we can use a file called robots.txt to prevent data aggregation from specific crawlers. However, 
 the effectiveness of this file lies entirely on the crawlers because they can ignore the file. It appears that there are no architecture relevant decisions on this question.
+ \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & NaN \\ \hline
+\end{longtable}
 
-\paragraph{Users' Privacy} As it was mentioned in the section Feedback \& Messaging Systems, users' privacy is an important issue. This issue was raised by three of the stakeholders 
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{How is users' privacy ensured?}  \\ \hline
+\textbf{Answer} &
+	As it was mentioned in the table: Feedback \& Messaging Systems, users' privacy is an important issue. This issue was raised by three of the stakeholders: the
 Dutch government, EU-Claim and the initiator. A user's data and conversations with airlines are private, this means that these information are available only after user authentication 
-and in the case of the private conversation available only to the airline of interest (maybe to EU-Claim as well if the user requests that). 
+and in the case of the private conversation available only to the airline of interest (maybe to EU-Claim as well if the user requests that). Furthermore the user data will be in an encrypted database.
+ \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & \textcolor{red}{Userdata will be encrypted} \\ \hline
+\end{longtable}
 
-\paragraph{Review's Format} Since user's privacy is a big issue the review's format should allow anonymity. This is accomplished by omitting the name, username or any other author 
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{Which features of the review format are going to ensure users' privacy?}  \\ \hline
+\textbf{Answer} &
+	Since user's privacy is a big issue the review's format should allow anonymity. This is accomplished by omitting the name, username or any other author 
 identifier from the public representation of a review.
+ \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & \textcolor{red}{User information will not be shown in the review} \\ \hline
+\end{longtable}
+
 
 \subsection{Domain specific problems related to data gathering and analysis}
 \subsubsection{Import questions}
 The purpose of this section is to explain domain related problems related with this task. The data gathering is responsible for polling external sources and providing the data to the storage system. This implicates two important question which are further elaborated next:
 \begin{enumerate}
+\item   What different kind of external resources are we dealing with?
 \item	How is the data from different external sources combined?
 \item	How is the combined data used in order to obtain a rating?
 \item	Is there any filtering process on the external data?
 \end{enumerate}
-The external sources vary from airline companies sites to review sites to social networks. These all have their own way of inputting a review. For instance, Twitter does not have any format related to the review and only consists of lines text, while review sites already have  a format in place that allows the user to rate some of the attributes (Food, timeliness, service etc.) on a given scale. The final application should be able to digest all these kinds of reviews and output the results on a scale . 
-A separate , however still important, question relates to the quality of the data. The external sources may or may not have systems in place that assure the quality of a review. Since the data is not inspected 
 
 \subsubsection{Answers}
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{What different kind of external resources are we dealing with?}  \\ \hline
+\textbf{Answer} &
+	The external sources vary from airline companies sites to review sites to social networks. These all have their own way of inputting a review. For instance, Twitter does not have any format related to the review and only consists of lines text, while review sites already have  a format in place that allows the user to rate some of the attributes (Food, timeliness, service etc.) on a given scale. The final application should be able to digest all these kinds of reviews and output the results on a scale . 
+A separate , however still important, question relates to the quality of the data. The external sources may or may not have systems in place that assure the quality of a review. 
+ \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & Dataformat, Text-to-rating \\ \hline
+\end{longtable}
 
-\paragraph{Combining external sources}
-The sources have their own unique format as explained earlier in the document. If the system where to parse this into a general format information might get lost or lot's of information is undefined.
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{How is the data from different external sources combined?}  \\ \hline
+\textbf{Answer} &
+	The sources have their own unique format as explained earlier in the document. If the system where to parse this into a general format information might get lost or lot's of information is undefined.
 However the general format helps decrease the complexity of analysing, because that system does not need to account for all the unique formats. This decision requires further collaboration with the data storage
-as that needs to be able to handle the data. 
+as that needs to be able to handle the data.  \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & Dataformat, Data Combining \\ \hline
+\end{longtable}
 
-\paragraph{Analysing external sources}
-Not all external sources give a rating on a scale (e.g. Twitter) therefore these reviews need to be analysed first in order to be useful. There are multiple options available when analysing these results:
-\begin{enumerate}
-\item Drop all reviews that have no rating attached to them. This would lead to a huge data loss, but decrease the complexity of the system. The ratings can then easily be combined by computing a weighted average (or by another formula) of the individual ratings.
-\item Transform the reviews without ratings by performing a sentiment analysis. After the analysis the ratings can be combined the same as in the other option.
-\end{enumerate}
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{How is the combined data used in order to obtain a rating?}  \\ \hline
+\textbf{Answer} &
+	Not all external sources give a rating on a scale (e.g. Twitter) therefore these reviews need to be analysed first in order to be useful. There are multiple options available when analysing these results:
+	\begin{enumerate}
+	\item Drop all reviews that have no rating attached to them. This would lead to a huge data loss, but decrease the complexity 			of the system. The ratings can then easily be combined by computing a weighted average (or by another formula) of the individual ratings.	
+	\item Transform the reviews without ratings by performing a sentiment analysis. After the analysis the ratings can be combined the same as in the other option.
+\end{enumerate} \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & Text-to-rating \\ \hline
+\end{longtable}
 
-\paragraph{Filtering}
-Some reviews may not be considered useful, because of certain properties. The system could apply some business rules in order to filter those reviews out. The business rules governing these reviews are however currently unknown. 
-
-
+\begin{longtable}{| l |  p{12cm} |}
+\hline
+\textbf{Question} & \textbf{Is there any filtering process on the external data?}  \\ \hline
+\textbf{Answer} &
+	Some reviews may not be considered useful, because of certain properties. The system could apply some business rules in order to filter those reviews out. The business rules governing these reviews are however currently unknown.  \\ \hline
+%\textbf{Requirements} & NaN \\ \hline
+\textbf{Design Decisions} & Text-to-rating \\ \hline
+\end{longtable}
 
 
 \subsection{Domain specific problems related to data storage and analysis}

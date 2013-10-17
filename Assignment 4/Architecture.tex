@@ -18,8 +18,21 @@
 \setlength\parindent{0pt}
 
 \section{Introduction}
-This document provides the architectural decisions together with the learning process. In the first section,  the stakeholders are identified together with their concerns.
-The second section contains multiple viewpoints on the architecture of the FlyWithUs system. Finally, Appendix A contains the results of the domain research performed early in the designing process and Appendix B contains the design decisions presented more formally.
+\subsubsection{Scope And Summary}
+This document provides the current architecture of the FlyWithUs application. FlyWithUs is a new startup that wants to create one single platform for airlines and users to write and read flight reviews. The platform must combine reviews from other sites as well as reviews from within the FlyWithUs application.
+This document identifies the stakeholders, requirements, design decisions and viewpoints on the current architecture of the FlyWithUs application and contains an overall definition of architecture. Because FlyWithUs does not currently have any technical employees (developers, testers etc.) these stakeholders are currently left out of scope of this document.   
+ 
+\subsubsection{View Overview}
+The document contains three viewpoints on the architecture:
+\begin{enumerate}
+\item The \emph{Functional decomposition view} identifies the different users within the system and their functionality. It also shows which modules are responsible for which actions.
+\item \emph{Data Flow}, this viewpoint is responsible for showing how data flows through the system.
+\item \emph{Concurrency view}. In the concurrency view the performance and scalability of the system are explained along with the tactics used to achieve them.
+\end{enumerate}
+ 
+\subsubsection{Document Organization}
+In the first section,  the stakeholders are identified together with their concerns.
+The second section contains multiple viewpoints on the architecture of the FlyWithUs system. In Appendix A the requirements of the stakeholders are stated. The design decisions are given in Appendix B and finally Appendix C contains the domain related analysis.
 
 %stakeholderpart
 \input{StakeholderConcerns}
