@@ -30,8 +30,8 @@ The questions that are important to the interfaces which affect user experience 
 	\item Business Clients: The airline companies. The airline companies want to see a general overview of their companies ratings 			and reviews with some additional features such as the 
 	reporting system (discussed in the next section).
 	\end{enumerate} \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
-\textbf{Design Decisions} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
+\textbf{Design Decisions} & - \\ \hline
 \end{longtable}
 \clearpage
 
@@ -63,7 +63,7 @@ In addition to these types there are also Guests and EU-Claim:
  	\item EU-Claim: EU-Claim can monitor a private conversation after a user's invitation. Furthermore, is notified if a conversation is not ''resolved'' for a specified period of time.
 	\end{itemize}
 \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & \textcolor{red}{Separate interfaces for Clients and Business Clients} \\ \hline
 \end{longtable}
 
@@ -94,7 +94,7 @@ The purpose of this section is to find the domain specific questions related to 
 	the stakeholders are going to have an extra cost (fee: a percent of every transaction or predefined + 10\$ – 25\$ every month). On the other hand, since the 
 	payment is addressed only to airline companies it is possible to do that offline through contracts, invoices etc.
 	The stakeholders informed us that they want to have an automated billing system. \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & \textcolor{red}{Billing system} \\ \hline
 \end{longtable}
 
@@ -112,8 +112,8 @@ The purpose of this section is to find the domain specific questions related to 
 	Furthermore, it is desirable for such a conversation to have states for example “resolved”  and “pending”, then a user can change its state from pending to resolved. As a result 
 	EU-Claim can be notified by the system if a report has been unresolved for a certain period of time.  Additionally, the state of a conversation allows the system to calculate the resolved 
 	issues and include that result in the website in order to encourage people to use the FlyWithUs platform. \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
-\textbf{Design Decisions} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
+\textbf{Design Decisions} & - \\ \hline
 \end{longtable}
 
 \clearpage
@@ -130,7 +130,7 @@ The purpose of this section is to find the domain specific questions related to 
 	\item Comparison between airlines (only if the airline shares her information as well).
 	\end{itemize}
  \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & Flight Information \\ \hline
 \end{longtable}
 
@@ -143,8 +143,8 @@ harvesting data from the other sources is resolved and even if the data gathered
 even though the data are public a collection of them is copyrightable. Additionally, we can use a file called robots.txt to prevent data aggregation from specific crawlers. However, 
 the effectiveness of this file lies entirely on the crawlers because they can ignore the file. It appears that there are no architecture relevant decisions on this question.
  \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
-\textbf{Design Decisions} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
+\textbf{Design Decisions} & - \\ \hline
 \end{longtable}
 
 \begin{longtable}{| l |  p{12cm} |}
@@ -155,7 +155,7 @@ the effectiveness of this file lies entirely on the crawlers because they can ig
 Dutch government, EU-Claim and the initiator. A user's data and conversations with airlines are private, this means that these information are available only after user authentication 
 and in the case of the private conversation available only to the airline of interest (maybe to EU-Claim as well if the user requests that). Furthermore the user data will be in an encrypted database.
  \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & \textcolor{red}{Userdata will be encrypted} \\ \hline
 \end{longtable}
 
@@ -166,7 +166,7 @@ and in the case of the private conversation available only to the airline of int
 	Since user's privacy is a big issue the review's format should allow anonymity. This is accomplished by omitting the name, username or any other author 
 identifier from the public representation of a review.
  \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & \textcolor{red}{User information will not be shown in the review} \\ \hline
 \end{longtable}
 
@@ -189,7 +189,7 @@ The purpose of this section is to explain domain related problems related with t
 	The external sources vary from airline companies sites to review sites to social networks. These all have their own way of inputting a review. For instance, Twitter does not have any format related to the review and only consists of lines text, while review sites already have  a format in place that allows the user to rate some of the attributes (Food, timeliness, service etc.) on a given scale. The final application should be able to digest all these kinds of reviews and output the results on a scale . 
 A separate , however still important, question relates to the quality of the data. The external sources may or may not have systems in place that assure the quality of a review. 
  \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & Dataformat, Text-to-rating \\ \hline
 \end{longtable}
 
@@ -200,7 +200,7 @@ A separate , however still important, question relates to the quality of the dat
 	The sources have their own unique format as explained earlier in the document. If the system where to parse this into a general format information might get lost or lot's of information is undefined.
 However the general format helps decrease the complexity of analysing, because that system does not need to account for all the unique formats. This decision requires further collaboration with the data storage
 as that needs to be able to handle the data.  \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & Dataformat, Data Combining \\ \hline
 \end{longtable}
 
@@ -213,7 +213,7 @@ as that needs to be able to handle the data.  \\ \hline
 	\item Drop all reviews that have no rating attached to them. This would lead to a huge data loss, but decrease the complexity 			of the system. The ratings can then easily be combined by computing a weighted average (or by another formula) of the individual ratings.	
 	\item Transform the reviews without ratings by performing a sentiment analysis. After the analysis the ratings can be combined the same as in the other option.
 \end{enumerate} \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & Text-to-rating \\ \hline
 \end{longtable}
 
@@ -222,7 +222,7 @@ as that needs to be able to handle the data.  \\ \hline
 \textbf{Question} & \textbf{Is there any filtering process on the external data?}  \\ \hline
 \textbf{Answer} &
 	Some reviews may not be considered useful, because of certain properties. The system could apply some business rules in order to filter those reviews out. The business rules governing these reviews are however currently unknown.  \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & Text-to-rating \\ \hline
 \end{longtable}
 
@@ -253,8 +253,8 @@ The system has to store information such as users, reviews, statistics, data fro
 \item Tripadvisor: There are currently 470 reviews on KLM. This indicates that there are 282.000 reviews on airline companies.
 \end{enumerate}
 The size of the data already shows that great care must be taken in the data-mining and analysis step regarding performance and scalability. As new external sources are added over time, this becomes of even greater importance.  \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
-\textbf{Design Decisions} & \textcolor{red}{The data is considered Big Data} \\ \hline
+%\textbf{Requirements} & - \\ \hline
+\textbf{Design Decisions} & - \\ \hline
 \end{longtable}
 
 \begin{longtable}{| l |  p{12cm} |}
@@ -268,8 +268,8 @@ The data categories defined are:
 \item Data from data-mining: The polling module (discussed previously) supplies the system with data from different external sources (e.g. Tripadvisor, Twitter). Because of the large amount of data scalability is a key quality attribute.
 \item Analysis results: The data from external sources is analysed to form a rating and calculate statistics for the airline companies. Performance is a key quality attribute here as these results are shown to a potentially large number of end users, as well as scalability as the statistical data grows fast over time.
 \end{enumerate}  \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
-\textbf{Design Decisions} & \textcolor{red}{The data is considered Big Data} \\ \hline
+%\textbf{Requirements} & - \\ \hline
+\textbf{Design Decisions} & - \\ \hline
 \end{longtable}
 
 
@@ -290,7 +290,7 @@ A this time we have several options:
 \item Split up the main website data and for each external source have a separate database containing the data-mined data.
 \end{enumerate}
   \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & Data split-up  \\ \hline
 \end{longtable}
 
@@ -301,7 +301,7 @@ A this time we have several options:
 The data collected from external sources require a great amount of storage over time. In addition to that, all the incoming data has to be analysed to create new ratings and statistical data. For this data both performance and scalability are the most important attributes.
 By utilizing an event type system the load can be balanced and only write data after it has been analysed, thus decreasing the amount of reads and writes the database has to run. The implication is that data in the event handler/queue is not persistent to the database and may be lost in system failures.
   \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & How are large data-sets handled?  \\ \hline
 \end{longtable}
 
@@ -312,7 +312,7 @@ By utilizing an event type system the load can be balanced and only write data a
 \textbf{Answer} & When new data is collected from external sources or when a review is made, the rating for the airline company needs to be updated. While a complete recalculation allows you to always change the weight of your external sources and reviews, it also means that over time more and more data has to be read from the database. Because of that the performance will deteriorate over time.
 To prevent this from happening, utilizing known values can greatly improve performance. By keeping track of the amount of tweets/reviews/etc received and the current rating, you only add the new input to those values by calculating the weight and the share it has on the total. By doing so you don't traverse the whole database thus greatly improving performance. If a recalculation is required this could always be initiated separately.
   \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & Recalculate or combine rating?  \\ \hline
 \end{longtable}
 
@@ -322,8 +322,8 @@ To prevent this from happening, utilizing known values can greatly improve perfo
 \textbf{Answer} & When new data is received, the rating and statistics need to be updated. This can either be done on a time-interval, such as once an hour, or using a queue and continuously update the data. To get the best performance and to safe on hardware cost, the latter is the most optimal solution. By spreading out the load, the machine does not need to handle high peaks and therefore you don't need to have a machine build to handle the peak when it happens. This means that the system required to run the updates can be run on a less powerful system thus saving cost. It also means that the data is always being updated and that the users get the most recent information possible.
 
   \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
-\textbf{Design Decisions} & \textcolor{red}{Incremental / interval update} \\ \hline
+%\textbf{Requirements} & - \\ \hline
+\textbf{Design Decisions} & Incremental / interval update \\ \hline
 \end{longtable}
 
 \begin{longtable}{| l |  p{12cm} |}
@@ -331,6 +331,6 @@ To prevent this from happening, utilizing known values can greatly improve perfo
 \textbf{Question} & \textbf{Will the flight information be used to influence the rating?}  \\ \hline
 \textbf{Answer} & The stakeholder interest in flight-data was the decreasing of the weight of ratings during delays caused by things out of the hands of the company, such as bad weather, and to see a relation in the statistics between flight-data and the height of their rating. To ensure the integrity of the reviews and to improve the performance of the system, we advice against the use of flight-data to decrease the weight of reviews. By doing so we don't have to read from the database to get the flight-data to filter reviews thus saving resources and gaining performance. It also ensures the data integrity as it may be possible that flight-data is entered after bad reviews have already been added to the system. It is also the case that if a flight is delayed or cancelled the service from the airline company to accommodate the passengers is being put to the test. This should not be weighted less because the flight-data says the delay is due to bad weather.
   \\ \hline
-%\textbf{Requirements} & NaN \\ \hline
+%\textbf{Requirements} & - \\ \hline
 \textbf{Design Decisions} & Flight Information \\ \hline
 \end{longtable}
