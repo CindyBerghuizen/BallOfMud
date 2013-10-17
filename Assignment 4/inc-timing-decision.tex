@@ -1,0 +1,29 @@
+
+\label{dd:inc-or-time}
+\captionof{table}{Incremental or Time-interval updates?}
+\begin{tabular}{ l  p{10cm}}
+\hline
+\bf Issue & Updating the statistics and rating can be done when receiving new data or on a time interval. \\
+\hline
+\bf Decision & Updating when receiving data, utilizing a queue to spread load. \\
+\hline
+\bf Status & Decided \\
+\hline
+\bf Group & Data Analysis \\
+\hline
+\bf Assumptions & None \\
+\hline
+\bf Constraints & None \\
+\hline
+\bf Positions & Update statistics and rating on a time-interval. \newline \newline
+Update incrementally. \\
+\hline
+\bf Argument & If a time-interval based system is used, the system will can create peak loads and lots of idling, which means a very variable resource usage. This in turn means that you both have a system running for nothing and that it also needs to be powerful enough to handle the load at the given time-intervals. In contrast, by using an incremental approach, the load on the system can be spread out. By doing so the system requires less resources to process the data as no load peaks will occur. \\
+\hline
+\bf Implications & The system will always be running and performing work. \\
+\hline
+\bf Related decisions & None \\
+\hline
+\bf Related requirements  & Performance, Scalability \\
+\hline
+\end{tabular}
