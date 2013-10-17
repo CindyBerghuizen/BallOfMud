@@ -1,22 +1,23 @@
 
+\label{dd:split}
 \captionof{table}{How is the data split up into multiple databases?}
 \begin{tabular}{ l  p{10cm}}
 \hline
-\bf Issue & The system deals with a lot of stored data, either new or already analysed and from a lot of different resources. How many databases gives a good maintainable system and allows for the best performance for all the different database usages?\\
+\bf Issue & The system deals with a lot of stored data, either new or already analysed and from a lot of different resources. How many databases gives a good maintainable system and allows for the best performance for all the different database usages? \\
 \hline
-\bf Decision & Split between data-mining (external and internal reviews statistics) and website data (users, conversations , ratings)\\
+\bf Decision & Split between data-mining (external and internal reviews statistics) and website data (users, conversations , ratings) \\
 \hline
-\bf Status & Decided\\
+\bf Status & Decided \\
 \hline
 \bf Group & Data Storage \\
 \hline
-\bf Assumptions & At the very least there is website data, data-mining data and statistical data.\\
+\bf Assumptions & At the very least there is website data, data-mining data and statistical data. \\
 \hline
 \bf Constraints & None \\
 \hline
 \bf Positions & All data is contained within one large database. \newline\newline
-Split between data-mining (external and internal reviews statistics) and website data (users, conversations , ratings)  \newline\newline
-Split between data-mining (external reviews), statistics on (external) reviews and website data (users, conversations , ratings)
+Split between data-mining (external and internal reviews statistics) and website data (users, conversations, ratings)  \newline\newline
+Split between data-mining (external reviews), statistics on (external) reviews and website data (users, conversations, ratings)
  \\
 \hline
 \bf Argument & Keeping all the data in one large database makes it very hard to scale and generally creates performance issues related with the amount of incoming data. 
@@ -27,6 +28,6 @@ The third option leads to a greater number of databases. However the statistics 
 \hline
 \bf Related decisions & How do we handle large data-sets? \\
 \hline
-\bf Related requirements  & Data Storage, Performance, Scalability\\
+\bf Related requirements  & Data Storage, Performance, Scalability \\
 \hline
 \end{tabular}

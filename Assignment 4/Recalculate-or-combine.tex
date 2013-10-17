@@ -5,19 +5,18 @@
 \hline
 \bf Issue & When receiving new information from external sources or our own website, the rating for the airline company needs to be updated. The rating can be recalculated by using all the historical data (full recalculate) or it is possible to combine only the new information that is not in the old rating and combine them (combine). \\
 \hline
-\bf Decision & Combine the old rating with the new information (reviews) to update to a new rating\\
+\bf Decision & Combine the old rating with the new information (reviews) to update to a new rating. \\
 \hline
-\bf Status & Pending\\
+\bf Status & Pending \\
 \hline
 \bf Group & Data Analysis \\
 \hline
 \bf Assumptions & It is possible to keep quickly keep count of the new reviews that are not within the current rating. \\
 \hline
-\bf Constraints & None\\
+\bf Constraints & None \\
 \hline
 \bf Positions & Recalculate the whole rating \newline\newline
-Combine the old rating and new information
-\\
+Combine the old rating and new information. \\
 \hline
 \bf Argument & Recalculating the whole rating is a performance expense operation and leads to a lot of duplicative steps. This is especially true when the number of reviews (external and internal) starts to grow. However in the case of combining, if a cross match needs to occur between flight information and reviews then the flight information needs to be available before the reviews come in. This is because once combined it is included in the final rating and cannot be reverted back. \\
 \hline
@@ -25,6 +24,6 @@ Combine the old rating and new information
 \hline
 \bf Related decisions & Incremental or Time-interval updates; Flight Information \\
 \hline
-\bf Related requirements  & Data combining, Flight Information\\
+\bf Related requirements  & Data combining, Flight Information \\
 \hline
 \end{tabular}
