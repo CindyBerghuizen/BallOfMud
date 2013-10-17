@@ -1,4 +1,5 @@
 \subsection{Minor Design Decisions}
+\label{sec:minor-dd}
 In this subsection the minor design decisions are stated. Those decisions do not have a great impact on the architecture but should still be known and considered. 
 
 \begin{itemize}
@@ -9,4 +10,8 @@ In this subsection the minor design decisions are stated. Those decisions do not
 \item The user data will be in a seperate encrypted database to guarantee the user privacy.
 
 \item User data will not be shown in the reviews, a serial ID will be shown instead. This is to guarantee the privacy of the user.
+
+\item After a user writes a review in the FlyWithUs platform, he will not be able to edit or delete that review. Updating reviews is not allowed in order to discourage bribing to improve or eliminate bad reviews. This will enhance the fairness of the system.
+
+\item The architecture does not include any decisions concerning data filtering. Data filtering is not considered to be an architecture significant decision since it does not impact the architecture and it can be solved with common solutions.
 \end{itemize}

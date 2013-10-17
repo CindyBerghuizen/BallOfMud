@@ -3,9 +3,9 @@
 \subsection{Concurrency Viewpoint}
 
 \begin{itemize}
-\item Related stakeholders: KLM, Initiator
+\item Related stakeholders: KLM, Initiator, DG
 \item Related Concerns: Availability, Performance, GreenIT
-\item Related design decisions: Redudancy; Concurrency
+\item Related design decisions: Redudancy (p.~\pageref{dd:redundancy});
 \end{itemize}
 
 \newpage
@@ -17,14 +17,14 @@
 \end{figure}
 \end{landscape}
 
-The concurrency viewpoint (see fig.~\ref{fig:concurrency}) illustrates how the system behaves when different users perform different operations on it.the flow of data within the back-end of the system. In this figure the registered users or guests that search or read reviews are represented by the Users Reading element and the registered users that write a  review are represented as Users Writing. This separation is necessary because these operations are handled differently by the system since the writing operation changes the state of the database while the reading operation does not. The airlines are represented only by one entity because there is no need to separate the search or the statistics results since they are both reading operations and do not cause any change on the database's state. Finally, to represent the external sources we do not need to separate them since they are handled the same way by the system.
+The concurrency viewpoint (Figure~\ref{fig:concurrency}) illustrates how the system behaves when different users perform different operations on it. In this figure the registered users or guests that search or read reviews are represented by the Users Reading element and the registered users that write a  review are represented as Users Writing. This separation is necessary because these operations are handled differently by the system since the writing operation changes the state of the database while the reading operation does not. The airlines are represented only by one entity because there is no need to separate the search or the statistics results since they are both reading operations and do not cause any change on the database's state. Finally, to represent the external sources we do not need to separate them since they are handled the same way by the system.
 
-In the related design decisions it is discussed that redundancy will increase availability by eliminating single points of failure. Although it may decrease performance, it makes FlyWithUs a more robust system. 
+In the design decision~\ref{dd:redundancy} it is discussed that redundancy will increase availability by eliminating single points of failure. Although it may decrease performance, it makes FlyWithUs a more robust system. 
 
 \subsubsection{Instances of Modules}
 
-A module's instances are separate processes that perform the same operations. For example, different instances of R\&R module respond to the users' requests, these instances can be different processes run on web servers. Additionally, instances of the modules review analytics and an external source analytics (eg. Facebook, Twitter, trip Advisor etc.) can run concurrently as different threads since the process of each post is dealt independently.
+A module's instances are separate processes that perform the same operations. For example, different instances of R\&R module respond to separate users' requests, these instances can be different processes run on web servers. Additionally, instances of the modules review analytics and any external source's analytics (eg. Facebook, Twitter, trip Advisor etc.) can run concurrently as different threads since the analysis of each post is dealt independently.
 
 \subsubsection{Redundancies}
 
-This viewpoint also puts forth single points of failure such as the event handler, the queue and the combine module. If any of these modules fails the system will have to revert to a previous state losing some the data collected. To avoid that, the system can have redundant modules that perform the same functionality and are synchronized, if any of them fails the others can continue from the point of failure without losing any data. Although it will increase the cost and will have negative impact on green IT, the stakeholders insisted on not losing any data and make the system as available as possible.
+This viewpoint also puts forth single points of failure such as the event handler, the queue and the combine module. If any of these modules fails the system will have to revert to a previous state losing some of the data collected. To avoid that, the system can have redundant modules that provide the same functionality and are synchronized, if any of them fails the others can continue from the point of failure without losing any data. Although it will increase the cost and will have negative impact on green IT, the stakeholders insisted on not losing any data and make the system as available as possible.

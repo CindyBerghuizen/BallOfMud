@@ -21,12 +21,12 @@
 \section{Introduction}
 \subsection{Scope And Summary}
 This document provides the current architecture of the FlyWithUs application. FlyWithUs is a new start-up that wants to create a single platform for airlines and users to write and read flight reviews. The platform must combine reviews from other sites as well as reviews from within the FlyWithUs application.
-This document identifies the stakeholders, requirements, design decisions and viewpoints on the current architecture of the FlyWithUs application and contains an overall definition of architecture. Because FlyWithUs does not currently have any technical employees (developers, testers etc.) these stakeholders are currently left out of scope of this document.
+This document identifies the stakeholders, the  requirements, the design decisions and the viewpoints on the current architecture of the FlyWithUs application and contains an overall definition of the architecture. Because FlyWithUs does not currently have any technical employees (developers, testers etc.) these stakeholders are currently left out of scope of this document.
  
 \subsection{Viewpoint Overview}
 The document contains three viewpoints on the architecture:
 \begin{enumerate}
-\item \emph{Functional Decomposition}. This viewpoint identifies the different users within the system and their functionality. It also shows which modules are responsible for which actions.
+\item \emph{Functional Decomposition}. This viewpoint identifies the different users and the supported functionality of the system. It also shows which modules provide which functionality.
 \item \emph{Data Flow}. This viewpoint is responsible for showing how data flows through the system.
 \item \emph{Concurrency}. This viewpoint explains the performance and scalability of the system along with the tactics used to achieve those.
 \end{enumerate}
@@ -34,19 +34,18 @@ The document contains three viewpoints on the architecture:
 \subsection{Change History}
 This document is the result of the first version (29 September, 2013) combined with the feedback received on week 40. In this section the most notable changes are stated:
 \begin{enumerate}
-\item Concurrency view instead of privacy. The privacy was redundant given that all the functionality can be shown in the functional decomposition view. 
-\item The requirements are stated in Appendix A
-\item Clear mapping between domain analysis (Appendix C) and design decisions (Appendix B)
-\item Rationale behind each view is explained in more detail
-\item Added Appendix D to show our reflection on the viewpoints 
+\item Concurrency viewpoint instead of privacy. The privacy was redundant given that all the functionality can be shown in the functional decomposition view. 
+\item The requirements are stated in appendix ~\ref{sec:requirements}.
+\item Clear mapping between domain analysis (Appendix~\ref{sec:domain}) and design decisions (Appendix~\ref{sec:designdecisions}).
+\item Rationale behind each view is explained in more detail.
+\item Added appendix~\ref{sec:reflections} to show our reflection on the viewpoints .
 \end{enumerate}
 
 \subsection{Document Organization}
-In the first section, the stakeholders are identified together with their concerns.
-The second section contains multiple viewpoints on the architecture of the FlyWithUs system. In Appendix A the requirements of the stakeholders are stated. The design decisions are given in Appendix B. Appendix C contains the domain related analysis and finally, Appendix D gives a reflection on the viewpoints that were made. 
+In  section~\ref{sec:definition}, the definition of architecture is discussed, in  section~\ref{sec:stakeholders} the stakeholders are identified together with their concerns. Section~\ref{sec:viewpoints} contains multiple viewpoints on the architecture of the FlyWithUs system. In appendix~\ref{sec:requirements} the requirements of the stakeholders are stated. The design decisions are given in appendix~\ref{sec:designdecisions}. Appendix~\ref{sec:domain} contains the domain related analysis and finally, appendix~\ref{sec:reflections} gives a reflection on the viewpoints that were made. 
 
 \section{Definition of Architecture}
-
+\label{sec:definition}
 First four definitions of software architecture are stated and their differences
 and similarities are discussed. Second, our own view on software architecture is
 given.
@@ -93,8 +92,8 @@ the system is build up, their functionality, the relations between them and the 
 
 %Input viewpoints here
 \section{Viewpoints}
- 
-This section contains three viewpoints on the architecture. These viewpoints were mainly due to the stakeholders concerns. The functional viewpoint shows the functional requirements of the system of all the available users. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last viewpoint shows the concurrencyn within the system to see which process can run parallel and which must be made redundant.
+ \label{sec:viewpoints}
+This section contains three viewpoints on the architecture. These viewpoints were mainly designed to show that this solution satisfies the stakeholders' concerns. The functional viewpoint shows the functional requirements of the system and all the available users. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last viewpoint shows the concurrency within the system to see which processes can run in parallel and which must be made redundant to avoid single points of failure.
 
 \input{FunctionalView}
 %\input{PrivacyView}
@@ -105,9 +104,11 @@ This section contains three viewpoints on the architecture. These viewpoints wer
 \appendix
 
 \input{requirementsAppendix}
+\label{sec:requirements}
 
 \clearpage
 \section{Formal Design Decisions}
+\label{sec:designdecisions}
 This appendix states the design decisions that were taken during the process of designing an architecture. Figure \ref{fig:ddtree} shows the tree of the design decisions that will each be further elaborated on this section.
 
 \begin{figure}[!ht]
