@@ -16,8 +16,6 @@
 \author{Chiel Peters, Omar Pakker, Mary Gouseti, Cindy Berghuizen}
 \maketitle
 
-%\tableofcontents
-
 \setlength\parindent{0pt}
 
 \section{Introduction}
@@ -33,9 +31,19 @@ The document contains three viewpoints on the architecture:
 \item \emph{Concurrency}. This viewpoint explains the performance and scalability of the system along with the tactics used to achieve those.
 \end{enumerate}
  
+\subsection{Change History}
+This document is the result of the first version (29 September, 2013) combined with the feedback received on week 40. In this section the most notable changes are stated:
+\begin{enumerate}
+\item Concurrency view instead of privacy. The privacy was redundant given that all the functionality can be shown in the functional decomposition view. 
+\item The requirements are stated in Appendix A
+\item Clear mapping between domain analysis (Appendix C) and design decisions (Appendix B)
+\item Rationale behind each view is explained in more detail
+\item Added Appendix D to show our reflection on the viewpoints 
+\end{enumerate}
+
 \subsection{Document Organization}
 In the first section, the stakeholders are identified together with their concerns.
-The second section contains multiple viewpoints on the architecture of the FlyWithUs system. In Appendix A the requirements of the stakeholders are stated. The design decisions are given in Appendix B. Appendix C contains the domain related analysis and finally, Appendix D gives a reflection on the viewpoints we made. 
+The second section contains multiple viewpoints on the architecture of the FlyWithUs system. In Appendix A the requirements of the stakeholders are stated. The design decisions are given in Appendix B. Appendix C contains the domain related analysis and finally, Appendix D gives a reflection on the viewpoints that were made. 
 
 \section{Definition of Architecture}
 
@@ -65,7 +73,7 @@ is defined as the components themselves (their properties/interfaces) and the re
 \item The definition stated in \cite{hayesroth} lays a focus on the functional components of a software architecture. With words like functional components, 
 behaviours and interfaces underlines the importance of declaring the way the components interact with each other.
 \item The definition of \cite{IEEE1471} is not limited only to the systems components, their functionalities and connections but also includes in the definition the 
-process of designing and maintaining an architecture. It explicitly states that the design process and the evolution are part of the architecture itself.
+process of designing and maintaining an architecture. It explicitly states that the design process and the principles guiding change are part of the architecture itself.
 \item The last definition (\cite{lane90}) presents architecture as the study of a system's structure. As a result architecture contains the modules and the connections between them that build the system. This also becomes clear
 from the title of the article \emph{Studying Software Architecture Through Design Spaces and Rules}.
 
@@ -86,7 +94,7 @@ the system is build up, their functionality, the relations between them and the 
 %Input viewpoints here
 \section{Viewpoints}
  
-This section contains three viewpoints on the architecture. These viewpoints were mainly due to the stakeholders concerns. The functional viewpoint shows the functional requirements of the system of all the available users. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last viewpoint shows the concurrency viewpoint of the system to see which process can run parallel and which are redundant.
+This section contains three viewpoints on the architecture. These viewpoints were mainly due to the stakeholders concerns. The functional viewpoint shows the functional requirements of the system of all the available users. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last viewpoint shows the concurrencyn within the system to see which process can run parallel and which must be made redundant.
 
 \input{FunctionalView}
 %\input{PrivacyView}
