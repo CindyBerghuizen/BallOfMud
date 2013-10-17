@@ -15,6 +15,9 @@
 \title{Software Architecture}
 \author{Chiel Peters, Omar Pakker, Mary Gouseti, Cindy Berghuizen}
 \maketitle
+
+\tableofcontents
+
 \setlength\parindent{0pt}
 
 \section{Introduction}
@@ -34,6 +37,49 @@ The document contains three viewpoints on the architecture:
 In the first section, the stakeholders are identified together with their concerns.
 The second section contains multiple viewpoints on the architecture of the FlyWithUs system. In Appendix A the requirements of the stakeholders are stated. The design decisions are given in Appendix B and finally Appendix C contains the domain related analysis.
 %TODO: appendix D info needs to be inserted here
+
+\section{Definition of Architecture}
+
+First four definitions of software architecture are stated and their differences
+and similarities are discussed. Second, our own view on software architecture is
+given.
+\subsection{Definitions on architectures}
+
+\begin{enumerate}
+\item Software Architecture is the set of structures needed to reason about the software system, which comprise the software elements, the relations between them, and the properties of both elements and relations.\cite{clemens}
+
+\item Software Architecture is an abstract system specification consisting primarily of functional components described in terms of their behaviours and interfaces and component-component interconnections\cite{hayesroth}
+
+\item Software Architecture is the fundamental organization of a system embodied in its components, their relationships to each other, and to the environment, and the principles guiding its design and evolution.\cite{IEEE1471}
+
+\item Software architecture is the study of the large-scale structure and performance of software systems. Important aspects of a system's architecture include the division of functions among system modules, the means of communication between modules, and the representation of shared information.\cite{lane90}
+
+\end{enumerate}
+
+These definitions share the same fundamental idea that software architecture
+is a set of structures/components/modules including their properties and the
+relationships between them. However, each of the definitions highlights certain
+aspects of architecture more than the others. 
+\begin{itemize}
+\item In \cite{clemens} and \cite{hayesroth} the focus has been put on the end result. The architecture 
+is defined as the components themselves (their properties/interfaces) and the relationships between them (interconnections).
+\item The definition stated in \cite{hayesroth} lays a focus on the functional components of a software architecture. With words like functional components, 
+behaviours and interfaces underlines the importance of declaring the way the components interact with each other.
+\item The definition of \cite{IEEE1471} is not limited only to the systems components, their functionalities and connections but also includes in the definition the 
+process of designing and maintaining an architecture. It explicitly states that the design process and the evolution are part of the architecture itself.
+\item The last definition (\cite{lane90}) presents architecture as the study of a system's structure. As a result architecture contains the modules and the connections between them that build the system. This also becomes clear
+from the title of the article \emph{Studying Software Architecture Through Design Spaces and Rules}.
+
+\end{itemize}
+
+\subsection{Our view on architecture}
+As the definitions mentioned above, we also agree on the point that a software architecture is defined as a set of components, their properties, behaviours and the relations
+between. However, we think that architecture is not only the structure of a software system but also contains the main design decisions that would explain why the system consists of 
+these components and include the stakeholders' quality attributes that lead the architects to those decisions. \\ 
+
+Our definition of software architecture would be:
+Software architecture is the structure of a software system along with the decisions that lead to this structure. To elaborate, architecture contains the components by which
+the system is build up, their functionality, the relations between them and the reason of their existence meaning which requirement of the stakeholders or quality attribute they accomplish. 
 
 %Stakeholder part
 \input{StakeholderConcerns}
@@ -90,6 +136,8 @@ This appendix states the design decisions that were taken during the process of 
 %Domain Decisions
 \clearpage
 \input{DomainDecisions}
+\clearpage
+\input{Reflection}
 
 %References
 \clearpage
