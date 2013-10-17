@@ -12,13 +12,13 @@
 \hline
 \bf Assumptions & Single points of failure prevent the system from working properly. \\
 \hline
-\bf Constraints & None\\
+\bf Constraints & None \\
 \hline
 \bf Positions & Do not analyse single points of failure and redundancy. If the system crashes, it crashes. \\
 \hline
 \bf Argument & By implementing redundancy for single points of failure, the system will be able to switch over to a redundant instance and thus keeping the system running. Without redundancy, every part of the system that uses the module that failed will also be unable to continue. \\
 \hline
-\bf Implications & By implementing redundancy, more resources are required. This may increase operational cost if a new server is required. \\
+\bf Implications & By implementing redundancy, more resources are required. This may increase operational cost if a new server is required. The performance of the redundant module may decrease because the module now needs to keep the redundant module in sync. \\
 \hline
 \bf Related decisions & None \\
 \hline
