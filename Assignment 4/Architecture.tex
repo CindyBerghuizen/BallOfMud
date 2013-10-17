@@ -18,48 +18,44 @@
 \setlength\parindent{0pt}
 
 \section{Introduction}
-\subsubsection{Scope And Summary}
-This document provides the current architecture of the FlyWithUs application. FlyWithUs is a new startup that wants to create one single platform for airlines and users to write and read flight reviews. The platform must combine reviews from other sites as well as reviews from within the FlyWithUs application.
-This document identifies the stakeholders, requirements, design decisions and viewpoints on the current architecture of the FlyWithUs application and contains an overall definition of architecture. Because FlyWithUs does not currently have any technical employees (developers, testers etc.) these stakeholders are currently left out of scope of this document.   
+\subsection{Scope And Summary}
+This document provides the current architecture of the FlyWithUs application. FlyWithUs is a new start-up that wants to create a single platform for airlines and users to write and read flight reviews. The platform must combine reviews from other sites as well as reviews from within the FlyWithUs application.
+This document identifies the stakeholders, requirements, design decisions and viewpoints on the current architecture of the FlyWithUs application and contains an overall definition of architecture. Because FlyWithUs does not currently have any technical employees (developers, testers etc.) these stakeholders are currently left out of scope of this document.
  
-\subsubsection{View Overview}
+\subsection{View Overview}
 The document contains three viewpoints on the architecture:
 \begin{enumerate}
-\item The \emph{Functional decomposition view} identifies the different users within the system and their functionality. It also shows which modules are responsible for which actions.
-\item \emph{Data Flow}, this viewpoint is responsible for showing how data flows through the system.
-\item \emph{Concurrency view}. In the concurrency view the performance and scalability of the system are explained along with the tactics used to achieve them.
+\item \emph{Functional Decomposition view}. This viewpoint identifies the different users within the system and their functionality. It also shows which modules are responsible for which actions.
+\item \emph{Data Flow}. This viewpoint is responsible for showing how data flows through the system.
+\item \emph{Concurrency view}. This viewpoint explains the performance and scalability of the system along with the tactics used to achieve those.
 \end{enumerate}
  
-\subsubsection{Document Organization}
-In the first section,  the stakeholders are identified together with their concerns.
+\subsection{Document Organization}
+In the first section, the stakeholders are identified together with their concerns.
 The second section contains multiple viewpoints on the architecture of the FlyWithUs system. In Appendix A the requirements of the stakeholders are stated. The design decisions are given in Appendix B and finally Appendix C contains the domain related analysis.
+%TODO: appendix D info needs to be inserted here
 
-%stakeholderpart
+%Stakeholder part
 \input{StakeholderConcerns}
 
 %Input viewpoints here
 \section{Viewpoints}
-
-This section contains three viewpoints on the architecture. These viewpoints were mainly due to the stakeholders concerns. The privacy view provides EU-Claim and the Dutch government the information related to their
-main concerns. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last view shows the functional
-requirements of the system of all the available users. 
+%TODO: This block requires changing
+This section contains three viewpoints on the architecture. These viewpoints were mainly due to the stakeholders concerns. The privacy view provides EU-Claim and the Dutch government the information related to their main concerns. The data-flow indicates how the system will be able to handle all the data from external and internal sources which is one of the biggest challenges in designing this architecture. The last view shows the functional requirements of the system of all the available users.
 
 \input{FunctionalView}
 %\input{PrivacyView}
-
 \input{DataFlow}
-
 \input{Concurrency}
 
-
+%Appendixes go here
 \appendix
 
 \input{requirementsAppendix}
 
 \clearpage
 \section{Formal Design Decisions}
-
-This appendix states the design decisions that were taken during the process of designing an architecture. Figure \ref{fig:ddtree} shows the tree of the design decisions that will each be further elaborated on this section. 
+This appendix states the design decisions that were taken during the process of designing an architecture. Figure \ref{fig:ddtree} shows the tree of the design decisions that will each be further elaborated on this section.
 
 \begin{figure}[!ht]
 \includegraphics[width= 410px]{DDTree}
@@ -67,18 +63,20 @@ This appendix states the design decisions that were taken during the process of 
 \label{fig:ddtree}
 \end{figure}
 
+%The Design Decisions
 \setcounter{table}{0}
+
 \clearpage
 \input{DataFormat}
 \newpage
 \input{FlightInformation}
-\newpage
+%\newpage
 %\input{Interfaces}
-%\newpage
-\input{largeData-sets}
 \newpage
-%\input{OnlinePayment}
+\input{largeData-sets}
 %\newpage
+%\input{OnlinePayment}
+\newpage
 \input{recalculate-or-combine}
 \newpage
 \input{Split-up}
@@ -88,9 +86,12 @@ This appendix states the design decisions that were taken during the process of 
 \input{redundancy-decision}
 \newpage
 \input{raw-data-decision}
-\clearpage
 
+%Domain Decisions
+\clearpage
 \input{DomainDecisions}
+
+%References
 \clearpage
 \begin{thebibliography}{9}
 
@@ -123,4 +124,3 @@ Bass et al.
 \end{thebibliography}
 
 \end{document}
-
