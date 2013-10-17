@@ -1,0 +1,27 @@
+
+\captionof{table}{Redundancy?}
+\begin{tabular}{ l  p{10cm}}
+\hline
+\bf Issue & Single points of failure form a risk in the system. The whole system may become unavailable if these points crash or are otherwise inhibited from doing their work. To keep the system up and running, critical modules need to have some form of backup/redundancy. \\
+\hline
+\bf Decision & Identify single points of failure and implement redundancy. \\
+\hline
+\bf Status & Decided \\
+\hline
+\bf Group & Redundancy \\
+\hline
+\bf Assumptions & Single points of failure prevent the system from working properly. \\
+\hline
+\bf Constraints & None\\
+\hline
+\bf Positions & Do not analyse single points of failure and redundancy. If the system crashes, it crashes. \\
+\hline
+\bf Argument & By implementing redundancy for single points of failure, the system will be able to switch over to a redundant instance and thus keeping the system running. Without redundancy, every part of the system that uses the module that failed will also be unable to continue. \\
+\hline
+\bf Implications & By implementing redundancy, more resources are required. This may increase operational cost if a new server is required. \\
+\hline
+\bf Related decisions & None \\
+\hline
+\bf Related requirements & \textcolor{red}{Backup/Redundancy} \\
+\hline
+\end{tabular}
